@@ -11,10 +11,15 @@
 * 从 GNU Make 到 CMake 
 * 了解不同平台的差异
 
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## TODO：
+- [ ] 环境配置
+	- [ ] PSPDEV
+	- [ ] VSCode
+- [ ] 目录结构
+- [ ] 编译依赖
+	- [ ] 如何build from source
+	- [ ] Makefile示例解析
+- [ ] PSP文件格式
+- [ ] 命令行工具详解（参数、源代码）
+- [ ] 引入第三方库
+- [ ] PSPLink
