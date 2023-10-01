@@ -9,13 +9,15 @@
 > 【其他】make到底干了些什么 http://bbs.chinaemu.org/read-htm-tid-86754-uid-12451.html
 
 ## EBOOT.PBP的构建流程
-1. 编译生成.o可重定位目标程序（自己负责）。指定变量`OBJS`
-2. 链接静态链接库（.a文件，在pspdev/psp/sdk/lib中）生成ELF文件。指定变量`LIBS`
+1. 编译生成.o可重定位目标文件（自己负责）。指定变量`OBJS`
+2. 链接静态链接库（.a文件，在pspdev/psp/sdk/lib中）生成ELF可执行目标文件。指定变量`LIBS`
 	```Makefile linenums="1" hl_lines="2"
 	$(TARGET).elf: $(OBJS) $(EXPORT_OBJ)
 		$(LINK.c) $^ $(LIBS) -o $@
 		$(FIXUP) $@
 	```
+注：LINK.C是GNU MAKE 中默认的变量，会展开
+注：参考 CSAPP 7.6.2 与静态库链接
 3. 使用`psp-fixup-imports`修复ELF文件的导入表。
 	```Makefile linenums="1" hl_lines="3"
 	$(TARGET).elf: $(OBJS) $(EXPORT_OBJ)
@@ -23,7 +25,7 @@
 		$(FIXUP) $@
 	```
 4.  生成PSP上的可执行文件。PSP支持ELF和PRX两种可执行文件格式。
-	+ （选择1）使用psp-strip生成优化的ELF文件
+	+ （选择1）使用psp-strip删除ELF文件中的符号表信息
 		```Makefile
 		$(STRIP) $(TARGET).elf -o $(TARGET)_strip.elf
 		```
