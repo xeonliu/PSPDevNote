@@ -70,6 +70,7 @@
 
 
 ## PSPDEV提供的基础Makefile
+不要忘记了，写笔记的目的不仅仅是为了使用PSPSDK开发，更是为了学习相关知识。所以在解析Makefile的过程中会穿插知识点和参考。
 位于`pspdev/psp/sdk/lib`基础的Makefile文件`build.mak`，通常会在自己的Makefile包含。
 ```makefile title="pspdev/psp/sdk/lib/build.mak"
 # Note: The PSPSDK make variable must be defined before this file is included.
