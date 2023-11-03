@@ -43,18 +43,28 @@ LIBS = -lSDLmain -lSDL2 -lGL -lGLU -lglut -lz -lpspvfpu -lpsphprm -lpspsdk -lpsp
 
 # SDL 中的 main 函数
 
+SDL 使用了一种技巧，通过宏定义将用户的 main 函数重命名为 SDL_main，然后提供自己的 main 函数。这样，当你在你的代码中写 main 函数时，预处理器实际上会将其重命名为 SDL_main
+
 下面是一段来自 pspdev 官网的示例代码
 假如我们不加-SDLmain，只加-SDL2 直接编译，会报错`undefined refernce to 'main'`
-这是十分奇怪的，因为我们我们显然定义了 main 函数。
 
-这就要谈到 SDL 这个库的特性：它能够自动将 main 函数转化成 SDL_main 函数。并预期实现新的 main 函数，在其中调用 SDL_main 并在前后运行添加额外的处理流程。
-
-注意到示例代码里不再有各种线程的注册和模块信息的指定，这正是因为 SDL 重新为我们定义的 main 函数能够帮我们做到这一点。
+注意到示例代码里不再有各种线程的注册和模块信息的指定，这正是因为 SDL 为我们提供的 main 函数帮助我们做到了这一点。
 自建 main 函数这一过程的实现位于 SDL_main 库
 
 下面是摘录自 SDL_main.h 的一段注释
 
+```c
+#elif defined(__PSP__)
+/* On PSP SDL provides a main function that sets the module info,
+   activates the GPU and starts the thread required to be able to exit
+   the software.
+
+   If you provide this yourself, you may define SDL_MAIN_HANDLED
+ */
+#define SDL_MAIN_AVAILABLE
+```
+
 下面是一段 SDL_main.c 的代码
 
-需要 include SDL_main(在 SDL.h 中已经包含)
-需要链接 SDL_main
+- 需要 include SDL_main(在 SDL.h 中已经包含)
+- 需要链接 SDL_main
