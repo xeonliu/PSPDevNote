@@ -187,3 +187,22 @@ Strip the .elf file to shrink size and reduce redundancy
 Create an EBOOT.PBP file, which houses additional XMB information (see pack-pbp --help)
 
 https://en.wikibooks.org/wiki/PSP_Development/Hello_World_Application
+
+# 链接SDL2
+## GCC预定义的宏
+
+你是Linux系统，那么GNUC会给你宏linux,__linux,__linux__三个宏中的一个。如果你是安卓系统，那么就会给ANDROID,__ANDROID__宏中的一个。 所以跨平台就是根据这些GNUC给出的宏来判断的。根据源码，我们可以知道GUNC会给出如下的宏： * linux系统:linux, __linux, __linux__ * 苹果系统:__APPLE__ * 苹果电脑:__MACOSX__ * 苹果手机:__IPHONEOS__ * 苹果电视:__TVOS__ * 安卓系统:__ANDROID__ * windows系统:WIN32, _WIN32, __CYGWIN__, __MINGW32__,__WINDOWS__ * PSP系统:__PSP__
+
+https://visualgmq.gitee.io/2019/07/28/%E5%90%84%E7%A7%8D%E5%BA%93%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84/
+## SDL_main
+SDL 使用了一种技巧，通过宏定义将用户的 main 函数重命名为 SDL_main，然后提供自己的 main 函数。这样，当你在你的代码中写 main 函数时，预处理器实际上会将其重命名为 SDL_main
+```c
+#elif defined(__PSP__)
+/* On PSP SDL provides a main function that sets the module info,
+   activates the GPU and starts the thread required to be able to exit
+   the software.
+
+   If you provide this yourself, you may define SDL_MAIN_HANDLED
+ */
+#define SDL_MAIN_AVAILABLE
+```
