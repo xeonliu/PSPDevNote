@@ -324,3 +324,26 @@ PSP_MODULE_INFO("SDL2", 0, 1, 1);
 PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
 
 int main(int argc, char \*argv[])
+
+# 链接 SDL2
+
+## GCC 预定义的宏
+
+你是 Linux 系统，那么 GNUC 会给你宏 linux,**linux,**linux**三个宏中的一个。如果你是安卓系统，那么就会给 ANDROID,**ANDROID**宏中的一个。 所以跨平台就是根据这些 GNUC 给出的宏来判断的。根据源码，我们可以知道 GUNC 会给出如下的宏： \* linux 系统:linux, **linux, **linux** _ 苹果系统:**APPLE** _ 苹果电脑:**MACOSX** _ 苹果手机:**IPHONEOS** _ 苹果电视:**TVOS** _ 安卓系统:**ANDROID** _ windows 系统:WIN32, \_WIN32, **CYGWIN**, **MINGW32**,**WINDOWS** \* PSP 系统:**PSP**
+
+https://visualgmq.gitee.io/2019/07/28/%E5%90%84%E7%A7%8D%E5%BA%93%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84/
+
+## SDL_main
+
+SDL 使用了一种技巧，通过宏定义将用户的 main 函数重命名为 SDL_main，然后提供自己的 main 函数。这样，当你在你的代码中写 main 函数时，预处理器实际上会将其重命名为 SDL_main
+
+```c
+#elif defined(__PSP__)
+/* On PSP SDL provides a main function that sets the module info,
+   activates the GPU and starts the thread required to be able to exit
+   the software.
+
+   If you provide this yourself, you may define SDL_MAIN_HANDLED
+ */
+#define SDL_MAIN_AVAILABLE
+```
