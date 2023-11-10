@@ -28,7 +28,7 @@ $(TARGET).elf: $(OBJS) $(EXPORT_OBJ)
 4.  生成 PSP 上的可执行文件。PSP 支持 ELF 和 PRX 两种可执行文件格式。 - （选择 1）使用 psp-strip 删除 ELF 文件中的符号表信息
     `Makefile
       $(STRIP) $(TARGET).elf -o $(TARGET)_strip.elf
-      ` - （选择 2）用 psp-prxgen 生成 PRX 文件。指定变量`BUILD_PRX`
+      ` - （选择 2）用 psp-prxgen 生成 PRX 文件（期间会删除符号表信息）。指定变量`BUILD_PRX`
     `Makefile
       %.prx: %.elf
       	psp-prxgen $< $@
