@@ -27,3 +27,6 @@
 - [ ] 发布
 	- [ ] EBOOT.PBP
 	- [ ] ISO / CSO
+
+## 抱怨
+全是deprecated和temporary fix.必须靠询问来得知各种使用方法best practice
