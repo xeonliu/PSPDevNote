@@ -335,15 +335,3 @@ https://visualgmq.gitee.io/2019/07/28/%E5%90%84%E7%A7%8D%E5%BA%93%E6%98%AF%E5%A6
 
 ## SDL_main
 
-SDL 使用了一种技巧，通过宏定义将用户的 main 函数重命名为 SDL_main，然后提供自己的 main 函数。这样，当你在你的代码中写 main 函数时，预处理器实际上会将其重命名为 SDL_main
-
-```c
-#elif defined(__PSP__)
-/* On PSP SDL provides a main function that sets the module info,
-   activates the GPU and starts the thread required to be able to exit
-   the software.
-
-   If you provide this yourself, you may define SDL_MAIN_HANDLED
- */
-#define SDL_MAIN_AVAILABLE
-```
