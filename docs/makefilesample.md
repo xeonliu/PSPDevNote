@@ -99,7 +99,7 @@ ENC		 = PrxEncrypter
 ```
 
 通过变量定义了需要用到的可执行程序的缩写，这些程序位于前述的`pspdev/bin`中
-其中`psp-strip`用于优化 ELF 文件大小，`mksfoex`用于生成`SFO`文件，`PrxEncrypter`用于加密`PRX`文件
+其中`psp-strip`用于删除 ELF 符号表以优化文件大小，`mksfoex`用于生成`SFO`文件，`PrxEncrypter`用于加密`PRX`文件
 
 ```makefile
 # Add PSPSDK includes and libraries.
