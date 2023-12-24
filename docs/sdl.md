@@ -92,18 +92,28 @@ SDL 使用了一种技巧，通过宏定义将用户的 main 函数重命名为 
 # Working with SDL3
 出人意料的是，在Github上SDL仓库的main分支已经被SDL3替代。不过这样更好，让我们有机会得以尝试没有资料下的探索，并以此检验自己的理解情况。
 
-
+## 下载仓库
 ```bash
 git clone https://github.com/libsdl-org/SDL
 cd SDL
 ```
 
-用pspdev.cmake提供的参数使用pspdev工具链构建
+>Building
+>To build SDL library for the PSP, make sure you have the latest PSPDev status and run:
+```bash
+cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=$PSPDEV/psp/share/pspdev.cmake
+cmake --build build
+cmake --install build
+```
+
+## 步骤
+
 ```bash
 cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=$PSPDEV/psp/share/pspdev.cmake
 ```
+用pspdev.cmake提供的参数使用pspdev工具链构建
 
-会安装到哪里？
+>会安装到哪里？
 `psp@pspserver:~/SDL/build$ cat cmake_install.cmake`
 ```
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
