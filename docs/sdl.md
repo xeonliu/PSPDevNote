@@ -230,3 +230,6 @@ int main(int argc, char *argv[])
     return 0;
 }
 ```
+
+
+[SDL3关于main函数的讨论](https://wiki.libsdl.org/SDL3/README/main-functions)
