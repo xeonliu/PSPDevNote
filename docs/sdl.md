@@ -233,3 +233,6 @@ int main(int argc, char *argv[])
 
 
 [SDL3关于main函数的讨论](https://wiki.libsdl.org/SDL3/README/main-functions)
+
+# working with c++
+-lc++std
