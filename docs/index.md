@@ -18,21 +18,21 @@
 ## TODO：
 - [x] 构建的目标
 - [ ] 环境配置
-	- [ ] PSPDEV
+	- [x] PSPDEV
 	- [ ] VSCode
 - [ ] PSPDEV目录结构
 - [ ] 编译体系
 	- [ ] 如何 Build from source
-	- [ ] Makefile 示例解析
+	- [x] Makefile 示例解析
 - [ ] PSP 文件格式
 - [ ] Hello World
 - [ ] 命令行工具详解（参数、源代码）
-- [ ] 引入第三方库（链接）
+- [x] 引入第三方库（链接）
 - [ ] PSPLink（调试）
 - [ ] 发布
 	- [ ] EBOOT.PBP
 	- [ ] ISO / CSO
-- [ ] Github Actions 自动构建
+- [x] Github Actions 自动构建
 
 ## 抱怨
 全是deprecated和temporary fix.必须靠询问来得知各种使用方法best practice
