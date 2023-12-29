@@ -1,10 +1,20 @@
-# Work with SDL2
+# Working with other libraries
 
-SDL2（Simple DirectMedia Layer） 是一个低层次跨平台图形开发库，常用于游戏开发。
+PSPDEV随附了许多可供链接的外部库，全部以存档（archive）文件（.a文件）形式储存在pspdev/psp/lib中。在Github上也介绍了通过pacman安装存放在Github上的外部库的方法。
+下面我们以SDL为例，介绍链接和使用外部库的方法
+## 推荐阅读
+
+> CS:APP 链接
+
+# Working with SDL2
+SDL（Simple DirectMedia Layer） 是一个低层次跨平台图形开发库，常用于游戏开发。
 适配 PSP、PS2 等多种游戏终端。
 
 它为图形界面开发者提供了一套统一的API，而在底层针对不同平台有不同的具体代码实现。
-# 链接
+
+截至目前，SDL已经更新到SDL3.而官方的PSPDEV随附的仍是SDL2，故先介绍SDL2
+
+## 链接
 
 > 注意：没看清这一块会导致无穷无尽的链接报错，请认真阅读
 
@@ -43,7 +53,7 @@ LIBS = -lSDLmain -lSDL2 -lGL -lGLU -lglut -lz -lpspvfpu -lpsphprm -lpspsdk -lpsp
 
 具体哪些库是绝对必须的还有待研究。
 
-# SDL 中的 main 函数
+## SDL 中的 main 函数
 
 SDL 使用了一种技巧，通过宏定义将用户的 main 函数重命名为 SDL_main，然后提供自己的 main 函数。这样，当你在你的代码中写 main 函数时，预处理器实际上会将其重命名为 SDL_main
 
@@ -92,7 +102,7 @@ SDL 使用了一种技巧，通过宏定义将用户的 main 函数重命名为 
 # Working with SDL3
 出人意料的是，在Github上SDL仓库的main分支已经被SDL3替代。不过这样更好，让我们有机会得以尝试没有资料下的探索，并以此检验自己的理解情况。
 
-## 下载仓库
+### 下载仓库
 ```bash
 git clone https://github.com/libsdl-org/SDL
 cd SDL
@@ -106,7 +116,7 @@ cmake --build build
 cmake --install build
 ```
 
-## 步骤
+### 步骤
 
 ```bash
 cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=$PSPDEV/psp/share/pspdev.cmake
@@ -156,8 +166,10 @@ drwxr-xr-x  9 psp psp    4096 Dec  2 09:25 ../
 还好新名字也用宏告诉你了
 
 在SDL3中，前面提到的令人费解的SDL2部分基本得到解决。
-PSP的参数需要自己指定而可以不使用SDL_main提供的默认值
-main函数不会使用宏进行强行替换，只是部分重要API的实现会采用依赖平台的函数。
+
+由于`SDL_main.h`已不再默认包含在`SDL.h`中，main函数默认情况下不会被宏进行强行替换。`PSP_MODULE_INFO`的参数可以自己方便的指定而不再局限于使用SDL_main提供的默认值。
+
+由于代码的改动，main函数的替换工作全部由SDL_main.h头文件实现，没有了源文件，意味着可供链接的SDL_main库不复存在。如果希望使用其替换功能，不再需要链接`SDL_main`
 
 给个自己测试出来的样例
 ```Makefile
@@ -232,7 +244,17 @@ int main(int argc, char *argv[])
 ```
 
 
-[SDL3关于main函数的讨论](https://wiki.libsdl.org/SDL3/README/main-functions)
+> [SDL3关于main函数的讨论](https://wiki.libsdl.org/SDL3/README/main-functions)
 
-# working with c++
--lc++std
+## Working with C++
+大多数库，包括PSPSDK自身在内，都是使用C语言编写的。为了使用面向对象的特性，我们往往会将C与C++混合编译。
+然而，往往被人们忽略的是，使用g++编译出的可重定位目标文件（.o文件）在链接生成可执行文件时需要链接C++的运行库`libstdc++`。
+
+以往使用g++进行编译链接时，往往自动链接了`libstdc++`。然而，PSPDEV随附的Makefile默认使用gcc进行链接，这就导致其仅仅自动链接`libc`而并未链接`libstdc++`。
+
+因而，请于Makefile中指定
+```Makefile
+LIBS = -lstdc++
+```
+
+如果不链接，会出现各种未定义的符号（symbol not defined），如`new`之类的关键字全部无法识别。
