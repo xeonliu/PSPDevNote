@@ -30,7 +30,7 @@
 - [x] 引入第三方库（链接）
 - [ ] PSPLink（调试）
 - [ ] 发布
-	- [ ] EBOOT.PBP
+	- [x] EBOOT.PBP
 	- [ ] ISO / CSO
 - [x] Github Actions 自动构建
 
