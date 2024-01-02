@@ -1,4 +1,56 @@
 # 播放视频的可能性？
+
+## PSP内置的视频功能
+在PSP官方固件中其视频播放功能体现在两处
+
++ 系统内置的视频播放器软件
+
++ 在XMB中显示游戏时播放的短片
+
+前者能读取记忆棒中存储的`MP4`封装的视频文件，而后者则播放嵌入PBP文件中的`pmf`(PlayStation Movie Format)视频文件。
+
+
+二者具体支持的规格如下(可能有误)：
+
+|  封装格式(Container)   | 视频分辨率(Resolution)  | 视频编码(Codec) |音频采样率| 音频编码 | 限制 |
+|  ----  | ----  |----|----|----|----|
+| MP4  | 320 x 240 (QVGA)|MPEG-4 **Simple Profile** |24000Hz|AAC|Non Statanrd Resolution & Bitrate 参见[YAPSPD <sup>1</sup>](#ref1)|
+| PMF  | can be as small as 64x64 pixels |H.264 (MPEG-4 Part 10 AVC)||ATRAC3plus|64kbps[<sup>2</sup>](https://www.sony.net/Products/ATRAC3/overview/)|
+
+依据互联网上存在的部分压制指南及官方文档，似乎最新固件上的视频播放器对分辨率和编码限制并不如此严格
+
+> **MPEG-4 Simple Profile** 在MPEG-4 Part 2 中定义，不同于 Advanced Simple Profile[<sup>3</sup>](https://en.wikipedia.org/wiki/MPEG-4_Part_2)，更与H.264无关 
+
+[OFW 6.60 Manual](https://manuals.playstation.net/document/en/psp/current/video/filetypes.html)
+
+You can play files of the following types on the PSP™ system.
+
+Memory Stick™ Video Format
+- MPEG-4 Simple Profile (AAC)
+- H.264/MPEG-4 AVC Main Profile (CABAC) (AAC) and Baseline Profile (AAC)
+
+MP4
+- MPEG-4 Simple Profile (AAC)
+- H.264/MPEG-4 AVC Main Profile (CABAC) (AAC) and Baseline Profile (AAC)
+
+AVI
+- Motion JPEG (Linear PCM)
+- Motion JPEG (μ-Law)
+
+不论如何，这至少证明了PSP能通过硬件加速解码的视频编码至少包括`MPEG-4 SP`和`H.264`
+## PSP 内置的 `libMpeg` 与 `libVideocodec` 有多大能力?
+加了硬解行不行？
+能解码何种视频流？
+
+### 前人的努力
+Deal with H.264?
+
++ Github: `pmfplayer`/`pmfplayer-lib` (Unlocking AVC API?)
+
++ FFPlay? -> PMPlayer -> PMP MOD -> PMP MOD AVC
+
+## 解封装？Demuxing
+## 如何渲染到屏幕？
 ## FFmpeg
 在Github上存在着利用了少量PSP汇编代码优化的的FFmpeg实现（ffmpeg-psp），目前尚不清楚其优化程度，而API亦过于老旧。
 
@@ -14,10 +66,6 @@
 + 没有硬解行不行？
 目前版本号显示可以做到
 
-## PSP 内置的 `libMpeg` 有多大能力?
-+ 加了硬解行不行？
-能解码何种视频流？
-Github: `pmfplayer`/`pmfplayer-lib`
 
 
 ## 用SDL渲染视频流？
@@ -25,3 +73,41 @@ Github: `pmfplayer`/`pmfplayer-lib`
 ## 视频流与音频流的同步？？
 + ffmpeg
 + pmfplayer?
+
+
+好，现在找到了一个叫`PMP MOD AVC PSP`的玩意
+```
+PMP Mod AVC by jonny
+
+Homepage: http://jonny.leffe.dnsalias.com
+E-mail:   jonny@leffe.dnsalias.com
+
+
+PMP Mod uses libavcodec from FFMPEG (http://ffmpeg.sourceforge.net/)
+Many thanks goes to:
+
+- magiK (PMF Player author) for unlocking the avc api and
+  x264 compatibility, great work
+- FFMPEG developers
+- JiniCho (PMP Mod is a modified version of his original FFMPEG and
+  FFPLAY psp port)
+- ps2dev.org developers and users
+- malloc/Raphael for the nice "modmod" version :)
+- Swede (http://www.doom9.org/), my super webspace provider
+- argandona & all the others helping with the icon/bg
+```
+
+
+[Reference form YAPSPD](https://gigawiz.github.io/yapspd/html_chapters_split/chap26.html#sec26.11)
+
+<div id="ref1"></div>
+
+> Video Limitation Resolution: 320 x 240 (QVGA), Nonstandard resolutions can be used but are still limited to the 76,800 pixel resolution of QVGA. 
+>
+> Codec: MPEG-4 SP (Simple Profile), which has different headers than the more common MPEG-4 formats.
+
+> Audio Limitation Codec: AAC Sampling Rate: 24000hz Bitrate Limitation: 1-768kb/s & 1500kb/s.
+
+> Any combination of video and audio bitrate that is equal to or less than 768kb/s is acceptable (i.e. 640kb/s video + 128kb/s audio = 768kb/s total, or 300kb/s video + 32kb/s audio = 332kb/s total). The PSP also supports a bitrate of 1500kb/s, but no bitrates inbetween 768kb/s and 1500kb/s.
+>
+>> note: ffmpeg can create PSP compatible mpeg4 files using the '3gp' profile

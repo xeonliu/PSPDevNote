@@ -15,7 +15,8 @@
 # 分块解读
 
 1. 奇怪的宏
-PSP_MODULE_INFO
+PSP_MODULE_INFO()
+在生成PRX时有用，置于`.rodata.sceModuleInfo`，参看文件格式一节
 2. Exit Call Back
 回调函数：某事件发生时（收到信号时）异常控制流切入的函数
 目标：注册回调函数
