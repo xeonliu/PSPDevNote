@@ -19,6 +19,9 @@
 
 依据互联网上存在的部分压制指南及官方文档，似乎最新固件上的视频播放器对分辨率和编码限制并不如此严格
 
+> PSvid script on Github
+> c:a aac -c:v libx264 -profile:v main -level:v 3.0 -x264opts ref=3:b-pyramid=none:weightp=1 -r 29.97 -s 320x240 -pix_fmt yuv420p -b:v 768k -ar 48000 -ab 96k
+
 > **MPEG-4 Simple Profile** 在MPEG-4 Part 2 中定义，不同于 Advanced Simple Profile[<sup>3</sup>](https://en.wikipedia.org/wiki/MPEG-4_Part_2)，更与H.264无关 
 
 [OFW 6.60 Manual](https://manuals.playstation.net/document/en/psp/current/video/filetypes.html)
