@@ -27,7 +27,9 @@
 - [ ] PSP 文件格式
 - [ ] Hello World
 - [ ] 命令行工具详解（参数、源代码）
-- [x] 引入第三方库（链接）
+- [ ] 链接
+  - [x] 引入第三方库（静态链接）
+  - [ ] 使用外部`prx`模块（伪动态链接，存根库）
 - [ ] 设备功能
 	- [ ] 显示
 	- [ ] 实用程序(Utility)
@@ -44,3 +46,6 @@
 
 ## 抱怨
 全是deprecated和temporary fix.必须靠询问来得知各种使用方法best practice
+
+## 致谢
+PSP Homebrew Discord
