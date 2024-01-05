@@ -10,4 +10,6 @@
 
 ## `socket&http lib` in PSPSDK
 
-## `curl` as PSPDEV package (enable https?)
+## `curl` & `polarSSL` in PSPDEV package (enable https)
+[PSPHDC-23/Jokr at main · KorigamiK/PSPHDC-23](https://github.com/KorigamiK/PSPHDC-23/tree/main/Jokr)
+不敢想象，差点又想自己造轮子了
