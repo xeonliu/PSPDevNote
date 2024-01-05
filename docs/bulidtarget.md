@@ -2,8 +2,8 @@
 我们的目标是编写能在PSP上运行的软件（常被称为`PSP Module`），从应用上可分为自制游戏（`Homebrew`）和插件(`Plugin`)。
 
 > 参考阅读
-> 一个关于PSPModule的文档，存在Github上某个项目中。
-> 链接过会加上来
+>
+> PSP Modules, Exports, Imports and Patches https://uofw.github.io/upspd/docs/
 
 在此之前，我们先了解一下PSP。
 
@@ -32,5 +32,9 @@ PSP推出以后，各路大神争相破解PSP固件，利用各种漏洞推出�
 对于自制游戏来说，为了能让其在主界面（`XMB`）的游戏菜单中显示，需要将其封装为EBOOT.PBP
 
 示例：我们假设你已经拥有一台配备CFW的PSP
+
 > A typical Plugin
+> ![Leda Plugin](https://www.gamebrew.org/images/2/23/Ledapsp2.png)
+
 > A typical Homebrew
+> ![Dinorun](https://www.gamebrew.org/images/7/70/Dinorunpsp.png)

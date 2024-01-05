@@ -1,9 +1,12 @@
 # Set Up the Environment
 
 在开始编写程序之前，我们需要首先配置好相关的环境。
-参见：https://pspdev.github.io/
+
+> 参见：https://pspdev.github.io/
 
 注意：使用Ubuntu 22.04及以上版本
+
+# Install PSPDEV Toolchain
 
 ## Dependencies
 想使用PSPDev提供的工具链，首先需要安装以下依赖
@@ -29,6 +32,17 @@ wget URL
 ` tar -xvf pspdev-ubuntu-latest.tar.gz`
 
 现在当前目录应该出现一个名为pspdev的文件夹。
+
+------
+
+## 使用VSCode远程连接之
+
+### SSH
+配置SSH
+### 设置C/C++插件的includePath
+VSCode并不知道你要用到的PSPSDK中的头文件在哪里，会标注红波浪线。在json配置文件中修改
+
+
 ## Git Proxy Config
 
 ```
@@ -40,7 +54,3 @@ git config --global https.proxy "http://"
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
-
-## 使用VSCode远程连接之
-
-## 安装SDL3

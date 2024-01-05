@@ -4,7 +4,7 @@
 
 ## 推荐阅读
 
-> 【【技术杂谈】C 编译体系】 https://www.bilibili.com/video/BV1J14y1D7Sw/?share_source=copy_web&vd_source=21fc443ef57d30a122c546adda50cd40
+> 【【技术杂谈】C 编译体系】 https://www.bilibili.com/video/BV1J14y1D7Sw
 
 > 【其他】make 到底干了些什么 http://bbs.chinaemu.org/read-htm-tid-86754-uid-12451.html
 
