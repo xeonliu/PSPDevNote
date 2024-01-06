@@ -1,4 +1,6 @@
 # PSPDEV Directory Structure
+什么是SDK？PSP开发的工具链是如何构成的？
+> 推荐观看：2022 PSP Homebrew Developer Conference: PSP Toolchain
 ```
 pspdev
 ├── bin

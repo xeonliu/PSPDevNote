@@ -5,6 +5,8 @@ PSPDEV随附了许多可供链接的外部库，全部以存档（archive）文�
 ## 推荐阅读
 
 > CS:APP 链接
+>
+> 2021 PSPHDC: Manage libraries
 
 # Working with SDL2
 SDL（Simple DirectMedia Layer） 是一个低层次跨平台图形开发库，常用于游戏开发。
@@ -258,3 +260,8 @@ LIBS = -lstdc++
 ```
 
 如果不链接，会出现各种未定义的符号（symbol not defined），如`new`之类的关键字全部无法识别。
+
+## How to manage existing libraries?
+PSPDEV/packages
+
+`psp-pacman`

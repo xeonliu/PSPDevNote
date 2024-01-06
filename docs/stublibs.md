@@ -13,7 +13,11 @@
 
 ## PSPSDK的库从哪里来？
 
-事实上，我们目前为止链接的所有PSPSDK中内置库都是`Stub Libraries`。
+> 2021 PSPHDC: uofw
+>
+> 2022 PSPHDC: Toolchain
+
+事实上，我们目前为止链接的所有PSPSDK中内置库几乎都是`Stub Libraries`。
 
 历史上，人们设法从索尼提供的官方固件升级包中提取出许多系统级`prx`模块，接着进行如下操作：
 

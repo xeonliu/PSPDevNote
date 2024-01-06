@@ -25,6 +25,7 @@
 >
 > ```ffmpeg -i sample.mp4 c:a aac -c:v libx264 -profile:v main -level:v 3.0 -x264opts ref=3:b-pyramid=none:weightp=1 -r 29.97 -s 320x240 -pix_fmt yuv420p -b:v 768k -ar 48000 -ab 96k```
 
+AVC MainProfile CABAC codec  
 
 [OFW 6.60 Manual](https://manuals.playstation.net/document/en/psp/current/video/filetypes.html)
 
@@ -32,14 +33,17 @@ You can play files of the following types on the PSP™ system.
 
 Memory Stick™ Video Format
 - MPEG-4 Simple Profile (AAC)
+
 - H.264/MPEG-4 AVC Main Profile (CABAC) (AAC) and Baseline Profile (AAC)
 
 MP4
 - MPEG-4 Simple Profile (AAC)
+
 - H.264/MPEG-4 AVC Main Profile (CABAC) (AAC) and Baseline Profile (AAC)
 
 AVI
 - Motion JPEG (Linear PCM)
+
 - Motion JPEG (μ-Law)
 
 不论如何，这至少证明了PSP能通过硬件加速解码的视频编码至少包括`MPEG-4 SP`和`H.264`
@@ -63,6 +67,15 @@ AVI
   + 我想`PPA`应该是绝响了，据称支持`OFW 6.60`
 
   有些感慨，以前的人们代码交流全靠在论坛发临时的网盘链接，如今工作流已然大大改善。
+
+### libmpeg
+libmpeg is a library that can be used for `demultiplexing` a PSP™ Movie Format (for game) stream (hereafter, PSMF stream), and `decoding` the demultiplexed video and audio streams.
+
+access unit: A set of NAL units that are consecutive in decoding order and contain exactly one primary coded 
+picture. In addition to the primary coded picture, an access unit may also contain one or more redundant coded 
+pictures, one auxiliary coded picture, or other NAL units not containing slices or slice data partitions of a
+coded picture. The decoding of an access unit always results in a decoded picture.
+
 
 ## FFmpeg
 在Github上存在着利用了少量PSP汇编代码优化的的FFmpeg实现（ffmpeg-psp），目前尚不清楚其优化程度，而API亦过于老旧。
@@ -133,4 +146,33 @@ Many thanks goes to:
 - malloc/Raphael for the nice "modmod" version :)
 - Swede (http://www.doom9.org/), my super webspace provider
 - argandona & all the others helping with the icon/bg
+```
+
+Bilibili:
+```
+视频
+ID                             : 1
+格式                             : AVC
+格式/信息                          : Advanced Video Codec
+格式配置 (Profile)                 : High@L5.1
+格式设置                           : CABAC / 4 Ref Frames
+格式设置, CABAC                    : 是
+格式设置, 参考帧                      : 4 帧
+编解码器 ID                        : avc1
+编解码器 ID/信息                     : Advanced Video Coding
+```
+
+```
+PSP DEV
+视频
+ID                             : 2
+格式                             : AVC
+格式/信息                          : Advanced Video Codec
+格式配置 (Profile)                 : Main@L2.1
+格式设置                           : CABAC / 2 Ref Frames
+格式设置, CABAC                    : 是
+格式设置, 参考帧                      : 2 帧
+格式设置, GOP                      : M=1, N=30
+编解码器 ID                        : avc1
+编解码器 ID/信息                     : Advanced Video Coding
 ```
