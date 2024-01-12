@@ -30,7 +30,8 @@
 - [ ] 链接
 	- [x] 引入第三方库（静态链接）
   	- [x] 导入外部`prx`模块（伪动态链接）
-– [ ] Stub/Resident Libraries 存根库
+		- [ ] Stub/Resident Libraries
+		- [ ] PRX文件
 - [ ] 设备功能
 	- [ ] 显示
 	- [ ] 实用程序(Utility)

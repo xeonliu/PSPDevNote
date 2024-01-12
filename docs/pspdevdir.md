@@ -99,6 +99,8 @@ bin
 + 加密
     + PrxEncrypter
     + ebootsign
++ 构建存根库
+    + psp-build-exports
 + 打包 / 解包
     + pack-pbp
     + unpack-pbp
@@ -144,3 +146,11 @@ objdump工具用来显示二进制文件的信息，就是以一种可阅读的�
 -t 显示文件的符号表入口。类似于nm -s提供的信息
 
 [引用](https://linuxtools-rst.readthedocs.io/zh-cn/latest/tool/objdump.html)
+
+
+Usage: psp-build-exports -b|-s|-k [-v] export.exp
+Options:
+-b, --build-exports     : Build an export file to stdout
+-s, --build-stubs       : Build a batch of stub files for the exports
+-k, --build-stubs-new   : Build a batch of stub files (in new format)
+-v, --verbose           : Verbose output
