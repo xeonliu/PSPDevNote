@@ -46,6 +46,12 @@
 	- [ ] ISO / CSO
 - [x] Github Actions 自动构建
 
+## Roadmap
+
++ 如欲掌握基本游戏开发技巧，可从Third Party Libraries直接跳至调试步骤。研究SDL项目。使用PSP部分功能可能需要阅读StubLib一节
+
++ 如欲开发Plugin或者Patch现有游戏，请仔细阅读StubLib一节
+
 ## 抱怨
 全是deprecated和temporary fix.必须靠询问来得知各种使用方法best practice
 

@@ -1,6 +1,35 @@
 site_name: PSP Dev Notes
 theme:
   name: material
+nav:
+  - Home: 'index.md'
+  - 'What are we building?': 'buildtarget.md'
+  - 'Setting up the environment': 'environment.md'
+  - 'What is in the PSPSDK?': 'pspdevdir.md'
+  - 'Common File Formats in development': 'format.md'
+  - 'Building procedure': 'makefilesample.md'
+  - 'Hello World': 'helloworld.md'
+  - Commandline Tools: ''
+  - Third Party Libraries: 'sdl.md'
+  - Resident / Stub Libraries: 
+    - Export & Import functions: 'stublibs.md'
+    - PRX File Structure: 'prxfilestruct.md'
+    - Reverse the PRX File: 
+      - PRX 2 STUB: 'prx2stub.md'
+      - Disasm: 'assembly.md'
+  - Device Capability:
+    - Display: ''
+    - Utility: 
+      - Dialog: ''
+      - OSK: ''
+      - Network: 'webrequest.md'
+      - Decode: 'videoplayback.md'
+      - I/O: ''
+  - CMake: 'cmake.md'
+  - Debug: 'debug.md'
+  - Release: 'release.md'
+  - CI / CD: 'githubactions.md'
+    
 markdown_extensions:
   - pymdownx.superfences
   - admonition
