@@ -5,8 +5,6 @@ PSPDEV随附了许多可供链接的外部库，全部以存档（archive）文�
 ## 推荐阅读
 
 > CS:APP 链接
->
-> 2021 PSPHDC: Manage libraries
 
 # Working with SDL2
 SDL（Simple DirectMedia Layer） 是一个低层次跨平台图形开发库，常用于游戏开发。
@@ -262,6 +260,83 @@ LIBS = -lstdc++
 如果不链接，会出现各种未定义的符号（symbol not defined），如`new`之类的关键字全部无法识别。
 
 ## How to manage existing libraries?
-PSPDEV/packages
+> 推荐阅读：
+>
+> 2021 PSPHDC: Manage libraries
+`PSPDEV/packages`
 
-`psp-pacman`
+包管理工具packman
+
+`psp-pacman`: Nothing but a Shell Script.
+
+```bash
+#!/bin/bash
+
+## Make sure PSPDEV is set
+if [ -z "${PSPDEV}" ]; then
+    echo "The PSPDEV environment variable has not been set"
+    exit 1
+fi
+
+if [ ! -d "${PSPDEV}" ]; then
+    echo "${PSPDEV} does not exist"
+    exit 2
+fi
+
+## Use sudo if the current user doesn't own $PSPDEV
+if ! touch "${PSPDEV}" >/dev/null 2>&1; then
+    sudo PSPDEV="${PSPDEV}" "$0" "$@"
+    exit $?
+fi
+
+## Add the directory with pacman's binaries to the start of the PATH
+export PATH="${PSPDEV}/share/pacman/bin:${PATH}"
+
+## Run pacman and make sure to use the current PSPDEV
+pacman \
+  --root "${PSPDEV}" \
+  --dbpath "${PSPDEV}/var/lib/pacman" \
+  --config "${PSPDEV}/etc/pacman.conf" \
+  --cachedir "${PSPDEV}/var/cache/pacman/pkg" \
+  --gpgdir "${PSPDEV}/etc/pacman.d/gnupg/" \
+  --logfile "${PSPDEV}/var/log/pacman.log" \
+  --hookdir "${PSPDEV}/share/libalpm/hooks" \
+  --hookdir "${PSPDEV}/etc/pacman.d/hooks" \
+  "$@"
+
+```
+
+pacman.conf
+```shell
+psp@pspserver:~/pspdev/etc$ cat pacman.conf 
+#
+# # ${PSPDEV}/pacman/share/etc/pacman.conf
+#
+# See the pacman.conf(5) manpage for option and repository directives
+
+#
+# GENERAL OPTIONS
+#
+[options]
+# 可以在此处更改代理设置
+XferCommand = /usr/bin/curl --proxy http://192.168.132.1:7890 -L -C - -f -o %o %u
+Architecture = mips
+
+# Misc options
+#UseSyslog
+#Color
+#NoProgressBar
+#TotalDownload
+CheckSpace
+#VerbosePkgLists
+
+# An example of a custom package repository.  See the pacman manpage for
+# tips on creating your own repositories.
+#[custom]
+#SigLevel = Optional TrustAll
+#Server = file:///home/custompkgs
+
+[pspdev]
+SigLevel = Optional TrustAll
+Server = https://github.com/pspdev/psp-packages/releases/latest/download/
+```

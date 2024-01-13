@@ -295,7 +295,7 @@ libzzipwrap-0.a
 objects-Release
 pkgconfig
 ```
-
+```
 if(PSP)
 40 link_libraries(
 41 SDL2::SDL2main
@@ -326,12 +326,40 @@ PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
 int main(int argc, char \*argv[])
 
 # 链接 SDL2
+```
+## 编写跨平台代码
+在编写跨平台程序时，我们希望部分代码根据目标平台的不同选择是否忽略。
 
-## GCC 预定义的宏
+在代码上体现为不同平台代码使用不同的`#ifdef`/`#ifndef`包裹
 
-你是 Linux 系统，那么 GNUC 会给你宏 linux,**linux,**linux**三个宏中的一个。如果你是安卓系统，那么就会给 ANDROID,**ANDROID**宏中的一个。 所以跨平台就是根据这些 GNUC 给出的宏来判断的。根据源码，我们可以知道 GUNC 会给出如下的宏： \* linux 系统:linux, **linux, **linux** _ 苹果系统:**APPLE** _ 苹果电脑:**MACOSX** _ 苹果手机:**IPHONEOS** _ 苹果电视:**TVOS** _ 安卓系统:**ANDROID** _ windows 系统:WIN32, \_WIN32, **CYGWIN**, **MINGW32**,**WINDOWS** \* PSP 系统:**PSP**
+例如：`SDL2`
 
-https://visualgmq.gitee.io/2019/07/28/%E5%90%84%E7%A7%8D%E5%BA%93%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84/
+### GCC 预定义的宏
 
-## SDL_main
+你是 Linux 系统，那么 GNUC 会给你宏 `linux`,`**linux`,`**linux**`三个宏中的一个。
 
+如果你是安卓系统，那么就会给 ANDROID,`**ANDROID**`宏中的一个。 
+
+[所以跨平台就是根据这些 GNUC 给出的宏来判断的。](https://visualgmq.gitee.io/2019/07/28/%E5%90%84%E7%A7%8D%E5%BA%93%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84/)
+
+### 查看psp-gcc预定义的宏
+```C
+psp@pspserver:~/pspdev/psp/share$ psp-gcc -E -dM - < /dev/null
+// ......
+#define __PSP__ 1
+#define __DQ_FBIT__ 63
+#define _MIPS_ARCH_ALLEGREX 1
+// ......
+#define R3000 1
+// ......
+#define _MIPS_ISA _MIPS_ISA_MIPS2
+// ......
+#define _PSP 1
+// ......
+#define __INT_MAX__ 0x7fffffff
+#define mips 1
+// ......
+#define __mips__ 1
+// ......
+#define PSP 1
+```
