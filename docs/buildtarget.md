@@ -29,6 +29,10 @@ PSP推出以后，各路大神争相破解PSP固件，利用各种漏洞推出�
 + ELF
 + PRX
 
+> A program that is loaded in memory is called a program module or simply a module. The PSP™ kernel is responsible for managing the modules in memory.
+>
+> The PSP™ kernel loader can handle two types of object files. One is a relocatable object file format unique to the PSP™ kernel called a PRX file, and the other is a normal ELF executable object file.
+
 对于自制游戏来说，为了能让其在主界面（`XMB`）的游戏菜单中显示，需要将其封装为EBOOT.PBP
 
 示例：我们假设你已经拥有一台配备CFW的PSP
@@ -40,8 +44,6 @@ PSP推出以后，各路大神争相破解PSP固件，利用各种漏洞推出�
 > ![Dinorun](https://www.gamebrew.org/images/7/70/Dinorunpsp.png)
 
 
-> Multiple programs can be loaded at the same time in PSP™ memory.
->
-> A program that is loaded in memory is called a program module or simply a module. The PSP™ kernel is responsible for managing the modules in memory.
->
-> The PSP™ kernel loader can handle two types of object files. One is a relocatable object file format unique to the PSP™ kernel called a PRX file, and the other is a normal ELF executable object file.
+
+
+

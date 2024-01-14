@@ -6,7 +6,7 @@ nav:
   - 'What are we building?': 'buildtarget.md'
   - 'Setting up the environment': 'environment.md'
   - 'What is in the PSPSDK?': 'pspdevdir.md'
-  - 'Common File Formats in development': 'format.md'
+  - 'Common File Formats': 'format.md'
   - 'Building procedure': 'makefilesample.md'
   - 'Hello World': 'helloworld.md'
   - Commandline Tools: ''
