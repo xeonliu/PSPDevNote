@@ -14,7 +14,7 @@
 
 |  封装格式(Container)   | 视频分辨率(Resolution)  | 视频编码(Codec) |音频采样率| 音频编码 | 限制 |
 |  ----  | ----  |----|----|----|----|
-| MP4 (MPEG-4 Part 12) | 320 x 240 (QVGA)|MPEG-4 **Simple Profile** (MPEG-4 Part 2)|24000Hz|AAC|Non Statanrd Resolution & Bitrate 参见[YAPSPD <sup>1</sup>](#ref1)|
+| MP4 (MPEG-4 Part 12) | 320 x 240 (QVGA)|MPEG-4 **Simple Profile** (MPEG-4 Part 2) / H.264 Main Profile / H.264 Baseline Profile |24000Hz|AAC LC|Non Statanrd Resolution & Bitrate 参见[YAPSPD <sup>1</sup>](#ref1)|
 | PMF  | can be as small as 64x64 pixels |H.264 (MPEG-4 Part 10 AVC)||ATRAC3plus|64kbps[<sup>2</sup>](https://www.sony.net/Products/ATRAC3/overview/)|
 
 > **MPEG-4 Simple Profile** 在MPEG-4 Part 2 中定义，不同于 Advanced Simple Profile[<sup>3</sup>](https://en.wikipedia.org/wiki/MPEG-4_Part_2)，更与H.264无关 
@@ -46,9 +46,13 @@ AVI
 
 - Motion JPEG (μ-Law)
 
-不论如何，这至少证明了PSP能通过硬件加速解码的视频编码至少包括`MPEG-4 SP`和`H.264`
+不论如何，这至少证明了PSP能通过硬件加速解码的视频编码至少包括`MPEG-4 SP`和`H.264 Main Profile`
 ## PSP 内置的 `libMpeg` 与 `libVideocodec` 有多大能力?
 性能如何？能解码何种视频流？
++ libmpeg(pspmpeg)
+  + Codec Library(pspvideocodec)
+  + Mpegbase Library(pspmpegbase)
+    ![Alt text](img/libmpeg.png)
 
 ### 前人的努力
 
@@ -148,8 +152,8 @@ Many thanks goes to:
 - argandona & all the others helping with the icon/bg
 ```
 
-Bilibili:
 ```
+Bilibili:
 视频
 ID                             : 1
 格式                             : AVC
@@ -173,6 +177,19 @@ ID                             : 2
 格式设置, CABAC                    : 是
 格式设置, 参考帧                      : 2 帧
 格式设置, GOP                      : M=1, N=30
+编解码器 ID                        : avc1
+编解码器 ID/信息                     : Advanced Video Coding
+```
+```
+PSVid
+视频
+ID                             : 1
+格式                             : AVC
+格式/信息                          : Advanced Video Codec
+格式配置 (Profile)                 : Main@L3
+格式设置                           : CABAC / 3 Ref Frames
+格式设置, CABAC                    : 是
+格式设置, 参考帧                      : 3 帧
 编解码器 ID                        : avc1
 编解码器 ID/信息                     : Advanced Video Coding
 ```

@@ -11,6 +11,14 @@
 > Wi-Fi 5 (802.11ac)(2014)
 >
 > Wi-Fi 6 (802.11ax)(2019)
+### PSP支持的WiFi加密协议
++ WEP
++ WPA-PSK(TKIP)
++ WPA-PSK(AES)
+> 不支持
+>+ WPA2
+>+ WPA2-PSK
+>+ WPA3
 ### 在应用中连接网络
 弹出弹窗，选择并连接
 
@@ -19,6 +27,6 @@
 ## `socket&http lib` in PSPSDK
 暂无研究计划
 
-## `curl` & `polarSSL` in PSPDEV package (enable https)
+## `curl` & `embededSSL` in PSPDEV package (enable https)
 [PSPHDC-23/Jokr at main · KorigamiK/PSPHDC-23](https://github.com/KorigamiK/PSPHDC-23/tree/main/Jokr)
 不敢想象，差点又想自己造轮子了
