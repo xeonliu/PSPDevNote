@@ -12,13 +12,13 @@
 >
 > 2022 PSPHDC: Toolchain
 
-事实上，我们目前为止链接的所有PSPSDK中内置库几乎都是`Stub Libraries`。
+事实上，我们目前为止链接的所有PSPSDK中内置库中的内核库几乎都是`Stub Libraries`。
 
 
 历史上，人们设法从索尼提供的官方固件升级包中提取出许多系统级`prx`模块，接着进行如下操作：
 
 
-1. 从`prx`模块提取得到导出表（`Export Table`,`.exp`文件）
+1. 使用`prxtool`从`prx`模块提取得到导出表（`Export Table`,`.exp`文件）
     >  **导出表(Export Table)**
     >
     > `prx`文件的导出表可以类比Windows PE文件（如DLL文件）中的导出表。
@@ -83,7 +83,7 @@
     ......
     ```
 
-    注释：[pspimport.s?](https://github.com/pspdev/pspsdk/blob/master/src/base/pspimport.s)
+    注释：[pspimport.s](https://github.com/pspdev/pspsdk/blob/master/src/base/pspimport.s)
 
 3. 存根文件编译形成可重定位目标文件`.o`并进一步打包成存根库`.a`
     
