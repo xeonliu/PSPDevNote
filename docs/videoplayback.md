@@ -82,7 +82,12 @@ coded picture. The decoding of an access unit always results in a decoded pictur
 
 
 ## FFmpeg
-在Github上存在着利用了少量PSP汇编代码优化的的FFmpeg实现（ffmpeg-psp），目前尚不清楚其优化程度，而API亦过于老旧。
+在Github上存在着利用了少量PSP汇编代码优化的的FFmpeg 0.5实现（ffmpeg-psp），目前尚不清楚其优化程度，而API亦过于老旧。
++ 解码速度实际上相当快，至少肉眼上比2023年构建的版本快不少。（下一步要实测！）
++ 感觉速度还是限制在了`swscale`和`SDL`的渲染上。
++ 查一下FFmpeg Release，大约是2010年的版本。
+
+不显示估计有22fps.
 
 让我们从FFmpeg开始吧，重走近20年前人们走过的老路。不过FFmpeg至今未断，也可以说是如今最好走的路吧。
 
@@ -102,12 +107,17 @@ coded picture. The decoding of an access unit always results in a decoded pictur
 
   - [x] 目前版本号显示可以做到
   - [x] 文件读取/解封装成功
+  - [x] 解码成功
+  - [x] 缩放成功
+  - [] 帧率如何？
+  - [] 音频播放
+  - [] 音视频同步
 
 ## Demuxing
 我想这个工作就交给FFmpeg吧，毕竟格式确实变化万千。
 
 ## Decoding
-使用PSP内置ME有无可能？
+使用PSP内置ME有无可能？依据`PMP AVC`似乎可以考虑`MElib`.
 
 ## Rendering
 使用SDL？

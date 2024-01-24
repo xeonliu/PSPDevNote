@@ -1,4 +1,4 @@
-# CPU架构
+# MIPS汇编
 PSP采用MIPS架构，32位CPU，ISA与规范略有变化
 
 > 推荐阅读
@@ -6,9 +6,11 @@ PSP采用MIPS架构，32位CPU，ISA与规范略有变化
 > MIPS ISA 手册
 >
 > CS:APP Chapter 3
+>
+> uofw wiki
 
 # A Programmer's Perspective
-与CS:APP宗旨类似，我们主要观察gcc编译后汇编文件的内容。
+与CS:APP宗旨类似，我们主要观察gcc编译后和objdump出汇编文件的内容。
 
 # psp-gcc
 psp-gcc是为生成PSP可执行文件而修改过的gcc，在pspdev/bin文件夹下
@@ -31,7 +33,7 @@ Target: x86_64-linux-gnu
 gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04)
 ```
 
-对于Windows下MSYS2的gcc
+对于Windows下MSYS2-mingw32的gcc
 ```shell
 $ gcc -v
 Using built-in specs.

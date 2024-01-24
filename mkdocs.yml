@@ -25,10 +25,15 @@ nav:
       - Network: 'webrequest.md'
       - Decode: 'videoplayback.md'
       - I/O: ''
+      - Timer: 'time.md'
+    - VFPU: ''
+    - Media Engine: 'mediaengine.md'
   - CMake: 'cmake.md'
   - Debug: 'debug.md'
   - Release: 'release.md'
   - CI / CD: 'githubactions.md'
+  - Patch: 'patch.md'
+  - Recent Projects: 'recentprojects.md'
     
 markdown_extensions:
   - pymdownx.superfences

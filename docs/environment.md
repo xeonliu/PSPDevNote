@@ -39,8 +39,11 @@ wget URL
 
 ### SSH
 配置SSH
+`sudo apt install openssh-server`
+### VSCode连接服务器下载卡住
+https://blog.csdn.net/qq_45021180/article/details/131444776
 ### 设置C/C++插件的includePath
-VSCode并不知道你要用到的PSPSDK中的头文件在哪里，会标注红波浪线。在json配置文件中修改
+VSCode并不知道你要用到的PSPSDK中的头文件在哪里，无法提供自动补全，会标注红波浪线。在C/C++插件的json配置文件中修改
 
 
 ## Git Proxy Config

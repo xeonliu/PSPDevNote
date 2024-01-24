@@ -1,4 +1,4 @@
-# Patching a existing PSP Game
+# Patching an existing PSP Game
 
 label: Reverse Engineering?
 > Language patch?

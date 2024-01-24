@@ -189,10 +189,12 @@ include $(PSPSDK)/lib/build.mak
 ```C
 #include <pspkernel.h>
 #include <SDL3/SDL.h>
-/* Define the module info section */
-PSP_MODULE_INFO("HelloSDL", 0, 1, 1);
-/* Define the main thread's attribute value (optional) */
-PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
+#include <SDL3/SDL_main.h>
+// If not using SDL_main.h. Uncomment lines below and register exit callbacks.
+// /* Define the module info section */
+// PSP_MODULE_INFO("HelloSDL", 0, 1, 1);
+// /* Define the main thread's attribute value (essential) */
+// PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
 
 int main(int argc, char *argv[])
 {
@@ -336,6 +338,7 @@ CheckSpace
 #SigLevel = Optional TrustAll
 #Server = file:///home/custompkgs
 
+# 在线仓库在此处
 [pspdev]
 SigLevel = Optional TrustAll
 Server = https://github.com/pspdev/psp-packages/releases/latest/download/
