@@ -9,7 +9,7 @@ nav:
   - 'Common File Formats': 'format.md'
   - 'Building procedure': 'makefilesample.md'
   - 'Hello World': 'helloworld.md'
-  - Commandline Tools: ''
+  - Commandline Tools: 'pspdevdir.md'
   - Third Party Libraries: 'sdl.md'
   - Resident / Stub Libraries: 
     - Export & Import functions: 'stublibs.md'

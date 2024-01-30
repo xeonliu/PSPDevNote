@@ -19,12 +19,12 @@ sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgp
 ## Download PSPDev from website
 
 + Using `curl`
-```
+```shell
 curl -JLO URL_of_the_file
 ```
 
 + Using `wget`
-```
+```shell
 wget URL
 ```
 

@@ -122,7 +122,41 @@ coded picture. The decoding of an access unit always results in a decoded pictur
 ## Rendering
 使用SDL？
 
+## FFPlay
+FFPlay是一个单文件的播放器示例。具有极高的参考价值。尤其对于如何使用老旧API而言。
+FFmpeg是个历史文档清晰可查询的大项目。这一点还是十分令人感动。
+可惜的是SDL2的API亦在急剧变化。
+想要把这两者正确融合还是很难啊！
+不过SDL一代二代均有PSP版本。考古也是有很大成功机会的！
+鄙人已经绷不住了，还是用GUI先测试一波吧！
+
+## Audio Playback
+太狗了，旧版FFmpeg不支持SBR？？
+```
+音频
+ID                             : 2
+格式                             : AAC LC SBR
+格式/信息                          : Advanced Audio Codec Low Complexity with Spectral Band Replication
+传播名                            : HE-AAC
+格式设置                           : NBC
+编解码器 ID                        : mp4a-40-5
+时长                             : 21 分 36 秒
+Duration_LastFrame             : -1 毫秒
+码率模式                           : 恒定码率 (CBR)
+码率                             : 48.0 kb/s
+声道数                            : 2 声道
+声道布局                           : L R
+采样率                            : 48.0 kHz
+帧率                             : 23.438 FPS (2048 SPF)
+压缩模式                           : 有损
+流大小                            : 7.17 MiB (22%)
+Default                        : 是
+组别                             : 1
+```
 ------
+
+参考了FFplay和其他教程。然而实机播放极为卡顿。仅播放音频都不行。加上视频解码更是无比缓慢。十分伤心，感觉暂时是无望了。
+
 ## 参考资料
 
 [Reference form YAPSPD](https://gigawiz.github.io/yapspd/html_chapters_split/chap26.html#sec26.11)

@@ -12,12 +12,13 @@
 
 1.  编译生成.o 可重定位目标文件（自己负责）。指定变量`OBJS`
 2.  链接静态链接库（.a 文件，在 pspdev/psp/sdk/lib 中）生成 ELF 可执行目标文件。指定变量`LIBS`
-    `Makefile linenums="1" hl_lines="2"
-$(TARGET).elf: $(OBJS) $(EXPORT_OBJ)
-	$(LINK.c) $^ $(LIBS) -o $@
-	$(FIXUP) $@
-`
-    注：LINK.C 是 GNU MAKE 中默认的变量，会展开
+    ```Makefile linenums="1" hl_lines="2"
+    $(TARGET).elf: $(OBJS) $(EXPORT_OBJ)
+	  $(LINK.c) $^ $(LIBS) -o $@
+	  $(FIXUP) $@
+    ```
+    注：LINK.C 是 GNU MAKE 中默认的变量，会展开，用于编译和链接。可使用`make -p | grep LINK.c`查看
+
     注：参考 CSAPP 7.6.2 与静态库链接
 3.  使用`psp-fixup-imports`修复 ELF 文件的导入表。
     ```Makefile linenums="1" hl_lines="3"
@@ -25,36 +26,39 @@ $(TARGET).elf: $(OBJS) $(EXPORT_OBJ)
     	$(LINK.c) $^ $(LIBS) -o $@
     	$(FIXUP) $@
     ```
-4.  生成 PSP 上的可执行文件。PSP 支持 ELF 和 PRX 两种可执行文件格式。 - （选择 1）使用 psp-strip 删除 ELF 文件中的符号表信息
-    `Makefile
+4.  生成 PSP 上的可执行文件。PSP 支持 ELF 和 PRX 两种可执行文件格式。 
+      - （选择 1）使用 psp-strip 删除 ELF 文件中的符号表信息
+      ```Makefile
       $(STRIP) $(TARGET).elf -o $(TARGET)_strip.elf
-      ` - （选择 2）用 psp-prxgen 生成 PRX 文件（期间会删除符号表信息）。指定变量`BUILD_PRX`
-    `Makefile
+      ```
+
+      - （选择 2）用 psp-prxgen 生成 PRX 文件（期间会删除符号表信息）。指定变量`BUILD_PRX`
+      ```Makefile
       %.prx: %.elf
       	psp-prxgen $< $@
-      ` - 对于 PRX 文件，可以使用`PrxEncrypter`进行加密使其能在未经修改的 PSP 上运行。指定变量`ENCRYPT`
-    `makefile
+      ```
+      
+      - 对于 PRX 文件，可以使用`PrxEncrypter`进行加密使其能在未经修改的 PSP 上运行。指定变量`ENCRYPT`
+      ```makefile
       ifeq ($(ENCRYPT), 1)
       	- $(ENC) $(TARGET).prx $(TARGET).prx
-      `
+      ```
     !!! Hint
     PRX 文件的生成依赖于特定的 ELF 文件。如果最终目标是生成 PRX 文件，则在第二步链接生成 ELF 文件时除了指定静态链接库还需要添加一些附加的指令。
-    `Makefile
-LDFLAGS  := $(addprefix -L,$(LIBDIR)) -specs=$(PSPSDK)/lib/prxspecs -Wl,-q,-T$(PSPSDK)/lib/linkfile.prx $(LDFLAGS)
-`
+    ```Makefile
+    LDFLAGS  := $(addprefix -L,$(LIBDIR)) -specs=$(PSPSDK)/lib/prxspecs -Wl,-q,-T$(PSPSDK)/lib/linkfile.prx $(LDFLAGS)
+    ```
 5.  使用 mksfo/mksfoex 生成 SFO 信息文件。指定相关变量`SFOFLAGS` `PSP_EBOOT_TITLE`
-
     ```makefile
     $(PSP_EBOOT_SFO):
     $(MKSFO) $(SFOFLAGS) '$(PSP_EBOOT_TITLE)' $@
     ```
-
+    
     !!! Hint
-    有关 SFO 文件格式，参考文件格式一页。
+  有关 SFO 文件格式，参考文件格式一页。
+  有关mksfo使用及源码解析，参考工具一页。
 
-        有关mksfo使用及源码解析，参考工具一页。
-
-6.  使用 pack-pbp 将 SFO 文件、ELF/PRX 文件和其他资源文件打包生成 EBOOT.PBP。指定相关变量`PSP_EBOOT_SFO`、`PSP_EBOOT_ICON`、`PSP_EBOOT_ICON1`、`PSP_EBOOT_UNKPNG`、`PSP_EBOOT_PIC1`、`PSP_EBOOT_SND0`、`PSP_EBOOT_PSAR`
+6. 使用 pack-pbp 将 SFO 文件、ELF/PRX 文件和其他资源文件打包生成 EBOOT.PBP。指定相关变量`PSP_EBOOT_SFO`、`PSP_EBOOT_ICON`、`PSP_EBOOT_ICON1`、`PSP_EBOOT_UNKPNG`、`PSP_EBOOT_PIC1`、`PSP_EBOOT_SND0`、`PSP_EBOOT_PSAR`
 
     ```Makefile
     $(PACK_PBP) $(PSP_EBOOT) $(PSP_EBOOT_SFO) $(PSP_EBOOT_ICON)  \
@@ -65,8 +69,7 @@ LDFLAGS  := $(addprefix -L,$(LIBDIR)) -specs=$(PSPSDK)/lib/prxspecs -Wl,-q,-T$(P
 
     !!! Hint
     有关 PBP 文件格式，参考文件格式一页。
-
-        有关pack-pbp使用及源码解析，参考工具一页。
+    有关pack-pbp使用及源码解析，参考工具一页。
 
 ## HelloWorld 示例中的 Makefile
 

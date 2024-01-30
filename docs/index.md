@@ -30,15 +30,15 @@
 - [ ] 链接
 	- [x] 引入第三方库（静态链接）
   	- [x] 导入外部`prx`模块（伪动态链接）
-		- [ ] Stub/Resident Libraries
+		- [x] Stub/Resident Libraries
 		- [ ] PRX文件
 - [ ] 设备功能
 	- [ ] 显示
 	- [ ] 实用程序(Utility)
 		- [ ] 弹窗(Dialog)
-		- [ ] 屏幕键盘(On Screen Keyboard. A.k.a. OSK)
+		- [ ] 屏幕键盘(On Screen Keyboard. A.k.a OSK)
 	- [ ] 网络
-	- [ ] 视频解码
+	- [x] 视频解码
 	- [ ] I/O
 	- [ ] 时间
 - [ ] PSPLink（调试）
