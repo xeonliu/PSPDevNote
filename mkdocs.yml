@@ -7,7 +7,7 @@ nav:
   - 'Setting up the environment': 'environment.md'
   - 'What is in the PSPSDK?': 'pspdevdir.md'
   - 'Common File Formats': 'format.md'
-  - 'Building procedure': 'makefilesample.md'
+  - 'Build Process': 'makefilesample.md'
   - 'Hello World': 'helloworld.md'
   - Commandline Tools: 'pspdevdir.md'
   - Third Party Libraries: 'sdl.md'
@@ -32,8 +32,12 @@ nav:
   - Debug: 'debug.md'
   - Release: 'release.md'
   - CI / CD: 'githubactions.md'
-  - Patch: 'patch.md'
+  - Patch: 
+    - 'patch.md'
+    - 'patchexe.md'
+    - 'cwcheat.md'
   - Recent Projects: 'recentprojects.md'
+  - Offical SDK: 'sdks.md'
     
 markdown_extensions:
   - pymdownx.superfences
