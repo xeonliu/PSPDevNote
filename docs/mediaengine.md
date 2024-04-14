@@ -17,6 +17,8 @@ PSP拥有两颗CPU。
 + IridescentRose / MElib
 
 看来看去，越看越累。不写代码在这里瞎研究就是这个坏处。
+还有个古早版本的MELib，不知道有没有用。
+或许新旧PSPSDK的衔接就在这里：使用PRX文件！
 
 melib.h
 ```C

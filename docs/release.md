@@ -20,8 +20,11 @@
 生成未加密的PRX文件
 
 ### UMD GEN Relink EBOOT.PBP
-Maybe we can used a encrypted prx file to load an unencrypted one?
+Maybe we can use an encrypted prx file to load an unencrypted one?
 
-Can we do that on CFW?
+Can we do that on OFW?
+
+## CSO
+> ISO Compressor
 
 

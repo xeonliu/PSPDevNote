@@ -219,6 +219,8 @@ endmacro()
 ### PSP Specific Code
 
 ### Porting 3rd party libs to PSP
+Using `./configure`
+
 View pspdev/psp-packages for more info
 + `patch` file
 + `BUILD` file

@@ -137,3 +137,4 @@ pspdev
 ```
 
 ## 使用 Github Action 自动构建
+在`PSPDEV`的仓库中，有自动构建的代码可供参考。

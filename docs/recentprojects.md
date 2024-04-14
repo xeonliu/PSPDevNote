@@ -12,15 +12,31 @@
     + [DeSmuME](https://www.gamebrew.org/wiki/DeSmuME_PSP): 任天堂DS模拟器
     
     + [nullDC](https://github.com/PSP-Archive/nulldce-psp/): 世嘉Dreamcast模拟器
+
++ 2023
+    + [retroArch](https://github.com/libretro/RetroArch): 跨平台早期游戏终端（如GBA）模拟器，对于使用Kernal Function和多PRX加载极具研究价值。可以在 `PPSSPP`上运行。
     
 
 ## 游戏引擎 (Game Engine)
 游戏引擎似乎一直是开发者大会上的大热门。每个人都想推广自己的API用来做游戏。
 
+openTRI?
 + 2020
+    + [Startdust Engine]()
 
 + 2021
-
+    + [Gen7 Engine]()
+    + [Integrity Engine]()
 + 2022
 
 + 2023
+
+## 移植(Port)
+对其他终端独占游戏的移植或重置亦是开发者大会上的热门。
++ 2020
+    + Spelunky PSP: 跨平台开发的启示。Youtube上有一组视频展示。
++ 2021
+
+## 教程(Tutorials)
++ 2021
+    + [Platformer Template](https://github.com/stacksta/Advanced_Platformer_Template-PSP/): openTri引擎的使用。

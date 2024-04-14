@@ -44,6 +44,11 @@ wget URL
 https://blog.csdn.net/qq_45021180/article/details/131444776
 ### 设置C/C++插件的includePath
 VSCode并不知道你要用到的PSPSDK中的头文件在哪里，无法提供自动补全，会标注红波浪线。在C/C++插件的json配置文件中修改
+本质上针对PSP的开发就是跨平台编译。与x86下对arm架构的开发流程有很多相似之处
+https://code.visualstudio.com/docs/cpp/configure-intellisense-crosscompilation
+
+
+https://code.visualstudio.com/docs/cpp/launch-json-reference
 
 
 ## Git Proxy Config
