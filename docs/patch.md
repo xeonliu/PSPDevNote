@@ -3,6 +3,15 @@
 label: Reverse Engineering?
 > Language patch?
 
+说白了，还是patch以下两个方面。
+
++ 可执行文件(ELF)
+ + 数据段
+ + 代码段
++ 资源文件
+ + 图片等
+
+针对这些需求有不同的patch方法，大致分类如下。
 
 ## Patch UMD file (ISO Patch)
 ### Patch Resource Files
@@ -10,7 +19,7 @@ label: Reverse Engineering?
 ### Patch Executable files
 往往对资源文件的打包还不够。
 EBOOT.BIN -> BOOT.BIN
-
+()
 PATCH BOOT.BIN
 
 Relink EBOOT.BIN to BOOT.bin using `UMDGEN`
@@ -21,7 +30,7 @@ Relink EBOOT.BIN to BOOT.bin using `UMDGEN`
 + 可以通过`Hex Editor`直接定位到字符串。
 
 ## Load PRX at Runtime Using CFW
-
+劫持动态链接库，监测运行状态
 ## load cheat code using CW Cheat (金手指)
 本质上是内存修改器。
 用于替换内存中数值/机器代码，或向内存中添加数据/机器代码。
