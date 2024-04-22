@@ -31,6 +31,11 @@ PPSSPP自带的调试工具算很强大了。简要介绍一下它的功能。
 
 具体用法可以参考链接。
 
+几种内存地址的变换
++ psp的内存地址空间
++ Dump出的内存
++ ELF中的vmaddr
++ ELF的二进制文件
 
 ## Makefile Example (From RetroArch)
 + After `include`

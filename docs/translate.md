@@ -1,9 +1,10 @@
+# Language Patch
+这篇文章写的太好了，我觉得没必要再多说什么了。
+https://github.com/Bunkai9448/digipet_PSP/blob/main/RE_Guide.md
+
 # 汉化相关
 
 都是2010年前后，上个时代的资料了。现在的人应该用更现代的语言来表述。使用现代的工具链！
-
-这篇文章写的太好了，我觉得没必要再多说什么了。
-https://github.com/Bunkai9448/digipet_PSP/blob/main/RE_Guide.md
 
 https://xiongonline.github.io/[%E8%BD%AC%E8%BD%BD][NDS]NDS%E6%B1%89%E5%8C%96%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B.html#top
 
