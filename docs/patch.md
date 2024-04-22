@@ -2,6 +2,9 @@
 
 label: Reverse Engineering?
 > Language patch?
+> 参考资料
+> https://github.com/Bunkai9448/digipet_PSP/blob/main/RE_Guide.md#Text-File
+> 
 
 
 ## Patch UMD file (ISO Patch)
@@ -20,8 +23,9 @@ Relink EBOOT.BIN to BOOT.bin using `UMDGEN`
 + 可以通过`Cutter`对源文件进行修改。
 + 可以通过`Hex Editor`直接定位到字符串。
 
-## Load PRX at Runtime Using CFW
 
+## Load PRX at Runtime Using CFW
+There are two ways of dealing with the system calls (used to print messages with system code): Using a PSP plugin, or modifying the ELF/BIN file.
 ## load cheat code using CW Cheat (金手指)
 本质上是内存修改器。
 用于替换内存中数值/机器代码，或向内存中添加数据/机器代码。

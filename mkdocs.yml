@@ -13,10 +13,10 @@ nav:
   - Third Party Libraries: 'sdl.md'
   - Resident / Stub Libraries: 
     - Export & Import functions: 'stublibs.md'
-    - PRX File Structure: 'prxfilestruct.md'
-    - Reverse the PRX File: 
-      - PRX 2 STUB: 'prx2stub.md'
-      - Disasm: 'assembly.md'
+    - Syscall: ''
+    - 'PRX File Structure': 'prxfilestruct.md'
+    - 'PRX 2 STUB': 'prx2stub.md'
+  - Create Plugins: ''
   - Device Capability:
     - Display: ''
     - Utility: 
@@ -26,16 +26,21 @@ nav:
       - Decode: 'videoplayback.md'
       - I/O: ''
       - Timer: 'time.md'
+      - Font: 'libs\font.md'
     - VFPU: ''
     - Media Engine: 'mediaengine.md'
   - CMake: 'cmake.md'
   - Debug: 'debug.md'
   - Release: 'release.md'
   - CI / CD: 'githubactions.md'
+  - Reverse Engineering:
+    - Disasm: 'assembly.md'
+    - Memory Space: 'moudleload.md'
   - Patch: 
     - 'patch.md'
     - 'patchexe.md'
     - 'cwcheat.md'
+    - Localization Tutorial: 'translate.md' 
   - Recent Projects: 'recentprojects.md'
   - Offical SDK: 'sdks.md'
     
