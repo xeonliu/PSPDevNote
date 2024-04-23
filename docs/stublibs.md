@@ -60,3 +60,7 @@
 + 写代码时：包含存根库的头文件
 + 链接时：编译存根.S文件并与之链接 / 链接存根库
 `OBJS`中指定.S->.o的文件名
+
+
+
+https://uofw.github.io/upspd/docs/SilverSpring_Blog/my.malloc.us/silverspring/category/nids/index.html
