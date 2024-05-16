@@ -20,11 +20,12 @@
 使用实机Debug有很多好处
 
 ## Debug Using `PPSSPP`
-> [《诡计对逻辑》汉化研究](https://pbteam.cn/posts/txl-hack/)
-> https://datacrystal.romhacking.net/wiki/Blaze_Union/Tutorials
-> https://github.com/Bunkai9448/digipet_PSP/blob/main/RE_Guide.md
+> + [《诡计对逻辑》汉化研究](https://pbteam.cn/posts/txl-hack/)
+> + https://datacrystal.romhacking.net/wiki/Blaze_Union/Tutorials
+> + https://github.com/Bunkai9448/digipet_PSP/blob/main/RE_Guide.md
 
 PPSSPP自带的调试工具算很强大了。简要介绍一下它的功能。
+
 + 查看寄存器
 + 查看内存
 + 给系统调用打断点
@@ -32,10 +33,13 @@ PPSSPP自带的调试工具算很强大了。简要介绍一下它的功能。
 具体用法可以参考链接。
 
 几种内存地址的变换
+
 + psp的内存地址空间
 + Dump出的内存
 + ELF中的vmaddr
 + ELF的二进制文件
 
-## Makefile Example (From RetroArch)
+### Debug using `PPSSPP` with `Ghidra`
+
+## Makefile Example (From `RetroArch`)
 + After `include`
