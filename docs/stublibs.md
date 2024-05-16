@@ -33,7 +33,7 @@
 
 1. 撰写PRX程序的C代码：不写`main`函数，写`module_start()`和`module_stop()`函数
 >!!! Hint
-    注意：请于module_start()函数中加一行`printf()`函数调用，否则在由ELF文件生成PRX文件时会出现缺少.lib.stub段的问题(WHY?)。
+    注意：请于module_start()函数中加一行对外部prx的调用`printf()`函数调用。否则在由ELF文件生成PRX文件时会出现缺少.lib.stub段的问题。这是由于目前prx文件必须同时含有导入表和导出表导致的。
 1. 编写导出表(`.exp`后缀的文本文件)，指定哪些函数可被其他模块引用
 > 导出格式。
 > 
