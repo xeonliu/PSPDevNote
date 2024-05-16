@@ -43,3 +43,11 @@ PPSSPP自带的调试工具算很强大了。简要介绍一下它的功能。
 
 ## Makefile Example (From `RetroArch`)
 + After `include`
+```Makefile
+debug:
+    /snap/bin/ppsspp-emu.ppsspp-sdl EBOOT.BIN
+```
+
+> If you are using Ubuntu and install PPSSPP from snap.
+> + Program Location: /snap/bin/ppsspp-emu.ppsspp-sdl
+> + `PSP` Folder Location: ~/snap/ppsspp-emu/common/.config/ppsspp

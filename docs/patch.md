@@ -36,6 +36,9 @@
 There are two ways of dealing with the system calls (used to print messages with system code): Using a PSP plugin, or modifying the ELF/BIN file.
 
 劫持动态链接库？（Module Tutorial）
+改内存
+Metal Gear Solid，改动libfont.prx
+
 监测运行状态？
 
 ## load cheat code using CW Cheat (金手指)
