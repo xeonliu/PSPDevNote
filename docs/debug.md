@@ -37,6 +37,9 @@ PPSSPP自带的调试工具算很强大了。简要介绍一下它的功能。
 + ELF中的vmaddr
 + ELF的二进制文件
 
+## Remote debug for `PPSSPP`
+PPSSPP supports WebSocket Debugging.
+
 ## Makefile Example (From RetroArch)
 + After `include`
 ```Makefile
