@@ -15,11 +15,13 @@
 #define SCE_FONT_ERROR_FILEREAD 0x80460007
 #define SCE_FONT_ERROR_FILESEEK 0x80460008
 
+PSP_MODULE_INFO("fontfuck", 0x0006, 1, 1);
+
 int fuck_thread() {
     printf("Fontfuck Start!\n")
     int status;
     SceUID modid = sceKernelLoadModule("disc0:/PSP_GAME/USRDIR/oldfont.prx", 0, NULL);
-    if(modid>0){
+    if(modid>0) {
         sceKernelStartModule(modid,0,NULL,&status,0);
     }
     sceKernelExitDeleteThread(0);

@@ -120,3 +120,108 @@ Module("sceLibFont",
 			new SCE(0x5dcf6858, "sceFontGetShadowGlyphImage_Clip", 'i', "xxxiiii"),
 			new SCE(0x02d7f94b, "sceFontFlush", 'i', "x")
 )
+
+font_fuck library 还不止一种，有许多变种，但是大体上应该是一致的。
+
+29个
+sceFontisElement?
+
+
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1333 sceFontGetCharInfo(08c4c05c, 27700, 09ff72f0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1434 sceFontGetCharGlyphImage(8c4c05c, 6c34, 9ff72d0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1333 sceFontGetCharInfo(08c4c05c, 28304, 09ff72f0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1434 sceFontGetCharGlyphImage(8c4c05c, 6e90, 9ff72d0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1333 sceFontGetCharInfo(08c4c05c, 21551, 09ff72f0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1434 sceFontGetCharGlyphImage(8c4c05c, 542f, 9ff72d0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1333 sceFontGetCharInfo(08c4c05c, 21160, 09ff72f0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1434 sceFontGetCharGlyphImage(8c4c05c, 52a8, 9ff72d0)
+
+0x9480
+
+```cpp
+undefined2 FUN_08884680(uint param_1)
+
+{
+  undefined4 uVar1;
+  undefined4 uVar2;
+  uint uVar3;
+  
+  param_1 = param_1 & 0xffff;
+  uVar1 = 0;
+  uVar2 = 0x2d;
+  if (DAT_08a33310 <= param_1) {
+    uVar1 = 0x2e;
+    uVar2 = 0x5a;
+    if (param_1 <= DAT_08a33310) {
+      uVar3 = 0x2d;
+      goto LAB_088846d0;
+    }
+  }
+  uVar3 = FUN_08884724(param_1,uVar1,uVar2);
+  uVar3 = uVar3 & 0xffff;
+LAB_088846d0:
+  return *(undefined2 *)
+          (&DAT_08a2fb60 +
+          //(
+		  //(param_1 - *(ushort *)(&DAT_08a3325c + uVar3 * 4)) 
+		  //+
+		  // Next one at 0x8a3325e
+          (uint)*(ushort *)(&DAT_08a3325e + uVar3 * 4)
+		  )
+		   * 2);
+}
+
+
+uint FUN_08884724(ushort param_1,uint param_2,uint param_3)
+
+{
+  uint uVar1;
+  uint uVar2;
+  uint uVar3;
+  
+  param_3 = param_3 & 0xffff;
+  param_2 = param_2 & 0xffff;
+  uVar3 = param_3 + param_2 >> 1;
+  uVar1 = param_3 - 1 & 0xffff;
+  if ((param_3 != param_2) &&
+     ((uVar2 = uVar3, param_1 < *(ushort *)(&DAT_08a3325c + uVar3 * 4) ||
+      (param_2 = uVar3 + 1 & 0xffff, uVar2 = param_3, uVar1 = uVar3,
+      *(ushort *)(&DAT_08a3325c + uVar3 * 4) < param_1)))) {
+    uVar1 = FUN_08884724(param_1,param_2,uVar2);
+  }
+  // param1==*(ushort *)(&DAT_08a3325c + uVar3 * 4)
+  return uVar1;
+}
+
+
+```
+
+08a3325c -> 0~0x5a
+
+20 00 00 00 a1 00 5f 00 40 81 9e 00 80 81 dd 00 b8 81 0a 01 c8 81 12 01 da 81 19 01 f0 81 28 01 fc 81 30 01 4f 82 31 01 60 82 3b 01 81 82 55 01 9f 82 6f 01 40 83 c2 01 80 83 01 02 9f 83 18 02 bf 83 30 02 40 84 48 02 70 84 69 02 80 84 78 02 9f 84 8a 02 9f 88 aa 02 40 89 08 03 80 89 47 03 40 8a c4 03 80 8a 03 04 40 8b 80 04 80 8b bf 04 40 8c 3c 05 80 8c 7b 05 40 8d f8 05 80 8d 37 06 40 8e b4 06 80 8e f3 06 40 8f 70 07 80 8f af 07 40 90 2c 08 80 90 6b 08 40 91 e8 08 80 91 27 09 40 92 a4 09 80 92 e3 09 40 93 60 0a 80 93 9f 0a 40 94 1c 0b 80 94 5b 0b 40 95 d8 0b 80 95 17 0c 40 96 94 0c 80 96 d3 0c 40 97 50 0d 80 97 8f 0d 40 98 0c 0e 9f 98 3f 0e 40 99 9d 0e 80 99 dc 0e 40 9a 59 0f 80 9a 98 0f 40 9b 15 10 80 9b 54 10 40 9c d1 10 80 9c 10 11 40 9d 8d 11 80 9d cc 11 40 9e 49 12 80 9e 88 12 40 9f 05 13 80 9f 44 13 40 e0 c1 13 80 e0 00 14 40 e1 7d 14 80 e1 bc 14 40 e2 39 15 80 e2 78 15 40 e3 f5 15 80 e3 34 16 40 e4 b1 16 80 e4 f0 16 40 e5 6d 17 80 e5 ac 17 40 e6 29 18 80 e6 68 18 40 e7 e5 18 80 e7 24 19 40 e8 a1 19 80 e8 e0 19 40 e9 5d 1a 80 e9 9c 1a 40 ea 19 1b 80 ea 58 1b
+
+00000020 005f00a1 009e8140 00dd8180 010a81b8 011281c8 011981da 012881f0 013081fc 0131824f 013b8260 01558281 016f829f 01c28340 02018380 0218839f 023083bf 02488440 02698470 02788480 028a849f 02aa889f 03088940 03478980 03c48a40 04038a80 04808b40 04bf8b80 053c8c40 057b8c80 05f88d40 06378d80 06b48e40 06f38e80 07708f40 07af8f80 082c9040 086b9080 08e89140 09279180 09a49240 09e39280 0a609340 0a9f9380 0b1c9440 0b5b9480 0bd89540 0c179580 0c949640 0cd39680 0d509740 0d8f9780 0e0c9840 0e3f989f 0e9d9940 0edc9980 0f599a40 0f989a80 10159b40 10549b80 10d19c40 11109c80 118d9d40 11cc9d80 12499e40 12889e80 13059f40 13449f80 13c1e040 1400e080 147de140 14bce180 1539e240 1578e280 15f5e340 1634e380 16b1e440 16f0e480 176de540 17ace580 1829e640 1868e680 18e5e740 1924e780 19a1e840 19e0e880 1a5de940 1a9ce980 1b19ea40 1b58ea80
+
+第二位，
+40-7E
+80-FC
+
+仅仅有编码的区域被列入。
+ea80-eaa4
+最末一位偏移量 1b58 + 25 = 1B7d = 7037
+
+恰好为SHIFT-JIS编码总数
+（7070？）有待查询，或许有些许删节。
+
+GB2312有6763个汉字+682个全角字符。
+
+
+字体替换：将对SceFontOpen的调用变为SceFontOpenUserFile的调用。
+不知道Fontfuck Library的适用程度如何。
+
+处于某些原因，PPSSPP无法正确解析PGF文件？可能是其SceFont实现有一些问题？
+Jpcsp对于现成的字体没有什么问题。
+
+CLANNED用的是微软雅黑，对字库进行了修改。
+Jpcsp使用的是Resource Han Rounded CN，可以说是对于中文用户十分友好了。
+MGSPW用的是微软雅黑Bold，没有对字库进行修改。Font='Microsoft YaHei UI' Type='Bold'
