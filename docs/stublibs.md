@@ -152,6 +152,7 @@ const struct _PspLibraryEntry __library_exports[2] __attribute__((section(".lib.
 };
 ```
 生成的C代码的作用实际上是在`.rodata.sceResident`段中以连续的结构体数组存入每个导出的Library中导出函数的NID和导出的函数的地址。然后在`.lib.ent`段使用模块名和`.rodata.sceResient`中对应项的地址创建相应的导出条目。
+
 |Segment Name|Export Index|Export Entry|Data|Type|
 |---|---|---|---|----|
 |.rodata.sceResident|1|__syslib_exports|MagicNumber|uint32|
