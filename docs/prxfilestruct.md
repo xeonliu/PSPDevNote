@@ -7,7 +7,7 @@ PRX是特殊的ELF文件，包含了一些PSP独有的段(Section)
 > Dump information in `prx` file
 
 ## 反汇编PRX的工具
-+ `psp-objdump`
+<!-- + `psp-objdump` -->
 
 + [`prxtool`](https://github.com/pspdev/prxtool)
 
@@ -16,7 +16,7 @@ PRX是特殊的ELF文件，包含了一些PSP独有的段(Section)
 
 ## File section
 
-`psp-objdump -x ./ULJS00064_USER_MAIN.BIN `
+`psp-objdump -x ./ULJS00064_USER_MAIN.BIN`
 ```
 psp@pspserver:~/code/test$ psp-objdump -x ./ULJS00064_USER_MAIN.BIN 
 
@@ -106,23 +106,35 @@ no symbols
 ```
 
 ## 代码段(.text)
-(.text, containing the module text, which is the executed machine code; .rodata, containing read-only data; .data, containing data which may be modified during the program execution.)
-### PRX文件中的两种函数
+> (.text, containing the module text, which is the executed machine code; .rodata, containing read-only data; .data, containing data which may be modified during the program execution.)
+
 > uofw Wiki
+> 
+> + `prxtool -w`: Disasm the executable sections of the file`
+>
+> + `prxtool -m`: inspect import & export 
+### PRX文件中存在实现的两种函数
 
-+ `prxtool -m`: inspect import&export 
-+ `prxtool -w`: Disasm the executable sections of the file`
++ Exported Functions (Referenced in `.rodata.sceResident`)
 
-+ exported functions (Shown in `.rodata`)
+    供外部模块使用的函数，也即导出的函数
++ Subroutine
 
-    供外部使用的函数
-+ subroutine
+    供模块自身内部使用的函数
 
-    供内部使用的函数
+## .sceStub.text
++ Imported Functinos
 
-## 只读文件段(.rodata)
+从外部模块导入的函数
+```
+jr ra
+nop
+```
+包含的都是空实现。在加载时由PSP内核进行动态链接。
+## 只读数据段(.rodata)
 
 ### .rodata.sceModuleInfo 段
+包含了模块的基本信息。由PSP_MOUDULE_INFO宏定义。
 ```
 psp@pspserver:~/code/test$ psp-objdump -s -j .rodata.sceModuleInfo ./ULJS00064_USER_MAIN.BIN 
 
@@ -134,3 +146,8 @@ Contents of section .rodata.sceModuleInfo:
  1aee8c f0130800 d4ec1a00 e4ec1a00 ecec1a00  ................
  1aee9c 68ee1a00                             h...      
 ```
+## 导出表相关
+### .lib.ent
+导出表的表项。
+### .rodata.sceResident
+导出的一个库中导出的NID、函数地址
