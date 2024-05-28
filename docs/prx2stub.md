@@ -19,6 +19,7 @@
 
 
 1. 使用`prxtool`从`prx`模块提取得到导出表（`Export Table`,`.exp`文件）
+`prxtool sample.prx -p`生成exports.exp
     >  **导出表(Export Table)**
     >
     > `prx`文件的导出表可以类比Windows PE文件（如DLL文件）中的导出表。
