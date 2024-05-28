@@ -24,7 +24,7 @@
 	- [ ] VSCode
 - [ ] PSPDEV目录结构
 - [ ] 编译体系
-	- [ ] 如何 Build from source
+	- [ ] 从源代码构建PSPSDK
 	- [x] Makefile 示例解析
 - [ ] PSP 文件格式
 - [ ] Hello World
@@ -33,9 +33,11 @@
 	- [x] 引入第三方库（静态链接）
   	- [x] 导入外部`prx`模块（动态链接）
 		- [x] Stub/Resident Libraries
-		- [ ] PRX文件
-		- [ ] 系统调用
-		- [ ] 编写插件
+			- [x] 模块导出
+			- [x] 模块导入
+		- [x] PRX文件
+			- [x] Sections
+		- [ ] 模块加载
 - [ ] 设备功能
 	- [ ] 显示
 	- [ ] 实用程序(Utility)
@@ -52,12 +54,15 @@
 	- [x] EBOOT.PBP
 	- [ ] ISO / CSO
 - [x] Github Actions 自动构建
-- [ ] 补丁（逆向工程）
+- [ ] 逆向工程
     - [ ] MIPS汇编
     - [ ] 内存地址空间
+    - [ ] 静态分析工具(Ghidra & Scripts)
+- [ ] 补丁
     - [ ] 静态修改（ELF文件）
     - [ ] 动态修改（插件/CWCheat）
-    - [ ] 汉化教程
+    - [ ] 编写CFW插件
+    - [x] 汉化教程
 
 ## Roadmap
 
