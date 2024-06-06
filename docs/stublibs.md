@@ -203,10 +203,66 @@ sceKernelStartModule
 + 链接时：编译存根`.S`文件至并与之链接 / 链接存根库
 `OBJS`中指定.S->.o的文件名
 
+.rodata.sceResident存入导入的模块名
+.lib.stub存入Stub表项
+// 其中有一个指针指向模块名。
+// flags
+// 5 (entry size) x32bit
+// 指向NID表
+// 指向.sceStub.text
+.sceStub.text存入函数空实现，//包括.lib.stub中Stub表项的位置
+.rodata.sceNid存入NID
+
+```s
+.macro IMPORT_START module, flags_ver
+
+	.set push
+	.section .rodata.sceResident, "a"
+	.word   0
+__stub_modulestr_\module:
+	.asciz  "\module"
+	.align  2
+
+	.section .lib.stub, "a", @progbits
+	.global __stub_module_\module	// 定义变量__stub_module即为此处地址
+__stub_module_\module:
+	.word   __stub_modulestr_\module // Module Name String Addr
+	.word   \flags_ver  // Flags
+	.word   0x5
+	.word   __executable_start  // 在psp-fixup-imports中重定位，指向NID表
+	.word   __executable_start  // 在psp-fixup-imports中重定位，指向sceStub.text
+
+	.set pop
+.endm
+```
+
 .lib.stub has Stub Entries
 
-One Stub One fuction
+```s
+.macro IMPORT_FUNC module, funcid, funcname
+    .set push
+    .set noreorder
 
+    .extern __stub_module_\module
+    .section .sceStub.text, "ax", @progbits
+    .globl  \funcname	// Make the symbol global
+    .type   \funcname, @function
+    .ent    \funcname, 0
+\funcname:
+    .word   __stub_module_\module	// Address of Module，在psp-fixup-imports中重定位用。被替换为jr ra;
+    .word   \funcid	// NID，在psp-fixup-imports中重定位用, nop.
+    .end    \funcname
+    .size   \funcname, .-\funcname
+
+    .section .rodata.sceNid, "a"
+    .word   \funcid
+
+    .set pop
+.endm
+```
++ 链接之后
+
+在`psp-fixup-imports`中利用`.stub.text`中存储的信息，重定位`.lib.stub`中NID地址与存根函数地址，并将`.stub.text`中内容填写为`jr ra`与`nop`。
 
 https://uofw.github.io/upspd/docs/SilverSpring_Blog/my.malloc.us/silverspring/category/nids/index.html
 

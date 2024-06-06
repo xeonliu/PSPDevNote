@@ -15,7 +15,9 @@
 #define SCE_FONT_ERROR_FILEREAD 0x80460007
 #define SCE_FONT_ERROR_FILESEEK 0x80460008
 
-PSP_MODULE_INFO("fontfuck", 0x0006, 1, 1);
+//https://github.com/pspdev/pspsdk/blob/master/src/user/pspmoduleinfo.h
+
+PSP_MODULE_INFO("fontfuck", PSP_MODULE_SINGLE_LOAD | PSP_MODULE_SINGLE_START, 1, 1);
 
 int fuck_thread() {
     printf("Fontfuck Start!\n")

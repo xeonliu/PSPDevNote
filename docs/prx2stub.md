@@ -14,6 +14,8 @@
 
 事实上，我们目前为止链接的所有PSPSDK中内置库中的内核库几乎都是`Stub Libraries`。
 
+在`pspsdk/src/kernel`中，我们只有`.h`头文件和`.S`存根文件（实际上是充满宏的汇编文件）。
+
 
 历史上，人们设法从索尼提供的官方固件升级包中提取出许多系统级`prx`模块，接着进行如下操作：
 
@@ -66,7 +68,7 @@
     
     命令：`psp-build-exports -k supervisor_exp.exp`
     
-    格式：头文件
+    格式：两种，`-k`和？
 
     例子：`pspsdk/src/ge/sceGe_user.S`(from GitHub)
     ```C
@@ -78,7 +80,7 @@
         IMPORT_START	"sceGe_user",0x40010000
     #endif
     #ifdef F_sceGe_user_0001
-        //Module Name, NID, Function Name
+        //Module Name, NID, Function Name(Used only during linking)
         IMPORT_FUNC	"sceGe_user",0x1F6752AD,sceGeEdramGetSize
     #endif
     ......
@@ -104,6 +106,30 @@
 
 2. 对这些模块进行逆向工程，得到其机器语言实现，通过对汇编代码的研究理解其使用方法，以此整理出描述函数接口的头文件并修正导出的函数名。
 
+NID的计算方式为函数名作SHA256取高32位。可以通过暴力破解尝试反推函数名。
+
 通过这种方法，得到包含头文件和存根库的整个PSPSDK开发环境。
 
 目前PSPSDK中有一些库的头文件中函数名仍带有奇怪的字符串，这实际上就是直接从导出表中得到的函数的`NID`，由于彼时尚不理解其具体实现，没有办法为其取名。
+
+
+.macro IMPORT_START module, flags_ver
+
+	.set push
+	.section .rodata.sceResident, "a"
+	.word   0
+__stub_modulestr_\module:
+	.asciz  "\module"
+	.align  2
+
+	.section .lib.stub, "a", @progbits
+	.global __stub_module_\module
+__stub_module_\module:
+	.word   __stub_modulestr_\module // Module Name String Addr
+	.word   \flags_ver  // Flags
+	.word   0x5
+	.word   __executable_start  // 在psp-fixup-imports中重定位
+	.word   __executable_start  // 在psp-fixup-imports中重定位
+
+	.set pop
+.endm

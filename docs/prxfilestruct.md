@@ -147,7 +147,7 @@ Contents of section .rodata.sceModuleInfo:
  1aee9c 68ee1a00                             h...      
 ```
 ## 导出表相关
-### .lib.ent
+### .lib.ent(Entry)
 导出表的表项。
-### .rodata.sceResident
+### .rodata.sceResident(Entry Table)
 导出的一个库中导出的NID、函数地址
