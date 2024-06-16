@@ -152,6 +152,7 @@ sceFontisElement?
 0x9480
 
 ```cpp
+/// param_1 SHIFT_JIS Code
 undefined2 FUN_08884680(uint param_1)
 
 {
@@ -160,16 +161,21 @@ undefined2 FUN_08884680(uint param_1)
   uint uVar3;
   
   param_1 = param_1 & 0xffff;
+  // Find in 0~0x2d
   uVar1 = 0;
   uVar2 = 0x2d;
   if (DAT_08a33310 <= param_1) {
+	// Find in 0x2e <= index < 0x5a
     uVar1 = 0x2e;
     uVar2 = 0x5a;
     if (param_1 <= DAT_08a33310) {
+	  // At 0x2d
       uVar3 = 0x2d;
       goto LAB_088846d0;
     }
   }
+
+  // Get the index in the 2nd Table
   uVar3 = FUN_08884724(param_1,uVar1,uVar2);
   uVar3 = uVar3 & 0xffff;
 LAB_088846d0:
@@ -178,13 +184,13 @@ LAB_088846d0:
           //(
 		  //(param_1 - *(ushort *)(&DAT_08a3325c + uVar3 * 4)) 
 		  //+
-		  // Next one at 0x8a3325e
+		  // Table 2 at 0x8a3325e
           (uint)*(ushort *)(&DAT_08a3325e + uVar3 * 4)
 		  )
 		   * 2);
 }
 
-
+/// param_1: SHIFT_JIS Code
 uint FUN_08884724(ushort param_1,uint param_2,uint param_3)
 
 {
@@ -194,7 +200,9 @@ uint FUN_08884724(ushort param_1,uint param_2,uint param_3)
   
   param_3 = param_3 & 0xffff;
   param_2 = param_2 & 0xffff;
+  // mid = (high+lo)/2;
   uVar3 = param_3 + param_2 >> 1;
+  // high = mid - 1;
   uVar1 = param_3 - 1 & 0xffff;
   if ((param_3 != param_2) &&
      ((uVar2 = uVar3, param_1 < *(ushort *)(&DAT_08a3325c + uVar3 * 4) ||
@@ -202,7 +210,7 @@ uint FUN_08884724(ushort param_1,uint param_2,uint param_3)
       *(ushort *)(&DAT_08a3325c + uVar3 * 4) < param_1)))) {
     uVar1 = FUN_08884724(param_1,param_2,uVar2);
   }
-  // param1==*(ushort *)(&DAT_08a3325c + uVar3 * 4)
+  // param1 >= *(ushort *)(&DAT_08a3325c + uVar3 * 4)
   return uVar1;
 }
 

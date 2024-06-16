@@ -153,6 +153,21 @@ const struct _PspLibraryEntry __library_exports[2] __attribute__((section(".lib.
 ```
 生成的C代码的作用实际上是在`.rodata.sceResident`段中以连续的结构体数组存入每个导出的Library中导出函数的NID和导出的函数的地址。然后在`.lib.ent`段使用模块名和`.rodata.sceResient`中对应项的地址创建相应的导出条目。
 
+![alt text](image-1.png)
+
+```C
+struct _PspLibraryEntry {
+   20         const char *    name;
+   21         unsigned short  version;
+   22         unsigned short  attribute;
+   23         unsigned char   entLen;
+   24         unsigned char   varCount;
+   25         unsigned short  funcCount;
+   26         void *                  entrytable;
+   27 
+}; 
+```
+
 |Segment Name|Export Index|Export Entry|Data|Type|
 |---|---|---|---|----|
 |.rodata.sceResident|1|__syslib_exports|MagicNumber|uint32|
@@ -213,7 +228,7 @@ sceKernelStartModule
 .sceStub.text存入函数空实现，//包括.lib.stub中Stub表项的位置
 .rodata.sceNid存入NID
 
-```s
+```S
 .macro IMPORT_START module, flags_ver
 
 	.set push
@@ -224,13 +239,13 @@ __stub_modulestr_\module:
 	.align  2
 
 	.section .lib.stub, "a", @progbits
-	.global __stub_module_\module	// 定义变量__stub_module即为此处地址
+	.global __stub_module_\module	# 定义变量__stub_module即为此处地址
 __stub_module_\module:
-	.word   __stub_modulestr_\module // Module Name String Addr
+	.word   __stub_modulestr_\module # Module Name String Addr
 	.word   \flags_ver  // Flags
 	.word   0x5
-	.word   __executable_start  // 在psp-fixup-imports中重定位，指向NID表
-	.word   __executable_start  // 在psp-fixup-imports中重定位，指向sceStub.text
+	.word   __executable_start  # 在psp-fixup-imports中重定位，指向NID表
+	.word   __executable_start  # 在psp-fixup-imports中重定位，指向sceStub.text
 
 	.set pop
 .endm
@@ -249,8 +264,8 @@ __stub_module_\module:
     .type   \funcname, @function
     .ent    \funcname, 0
 \funcname:
-    .word   __stub_module_\module	// Address of Module，在psp-fixup-imports中重定位用。被替换为jr ra;
-    .word   \funcid	// NID，在psp-fixup-imports中重定位用, nop.
+    .word   __stub_module_\module	# Address of Module，在psp-fixup-imports中重定位用。被替换为jr ra;
+    .word   \funcid	# NID，在psp-fixup-imports中重定位用, nop.
     .end    \funcname
     .size   \funcname, .-\funcname
 

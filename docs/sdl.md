@@ -343,3 +343,10 @@ CheckSpace
 SigLevel = Optional TrustAll
 Server = https://github.com/pspdev/psp-packages/releases/latest/download/
 ```
+
+Implement C Functions in C++.
+```C
+extern "C"
+```
+
+符号修饰、函数签名、符号重整
