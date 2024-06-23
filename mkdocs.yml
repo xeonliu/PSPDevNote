@@ -29,13 +29,14 @@ nav:
       - Font: 'libs\font.md'
     - VFPU: ''
     - Media Engine: 'mediaengine.md'
+    - Module Load: 'moudleload.md'
   - CMake: 'cmake.md'
   - Debug: 'debug.md'
   - Release: 'release.md'
   - CI / CD: 'githubactions.md'
   - Reverse Engineering:
     - Disasm: 'assembly.md'
-    - Memory Space: 'moudleload.md'
+    - Memory Space: 'memspace.md'
   - Patch: 
     - 'patch.md'
     - 'patchexe.md'
