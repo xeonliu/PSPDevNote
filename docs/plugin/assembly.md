@@ -1,43 +1,29 @@
 # MIPS汇编
-PSP采用MIPS架构，32位CPU，ISA与规范略有变化
+PSP的CPU采用MIPS架构，32位。ISA与规范略有变化
 
 > 推荐阅读
-> CS:APP Chapter 3
->
-> [uofw wiki](https://github.com/uofw/uofw/wiki/MIPS)
-> MIPS, Logical Blocks, Functions三节
+> 
+> + 《CS:APP》 Chapter 3
+> + [uOFW Wiki](https://github.com/uofw/uofw/wiki/MIPS)：
+> MIPS, Logical Blocks, Functions 三节
+> + Module Tutorial
 
 # A Programmer's Perspective
 与CS:APP宗旨类似，我们主要观察gcc编译后和objdump出汇编文件的内容。
 
 # psp-gcc
-psp-gcc是为生成PSP可执行文件而修改过的gcc，在pspdev/bin文件夹下
-gcc可以为不同的目标系统生成可执行文件，不同架构、不同系统上的可执行文件格式不同。
+`psp-gcc`是为生成PSP可执行文件而修改过的`gcc`，位于`pspdev/bin`文件夹下
+
+不同架构、不同系统上的可执行文件格式不同
+
 使用`psp-gcc -v`可以显示详细信息
+
 ```shell
 psp@pspserver:~$ psp-gcc -v
 Using built-in specs.
 COLLECT_GCC=psp-gcc
 Target: psp
 gcc version 11.2.0 (GCC)
-```
-注意到其`target`为PSP
-对比x86-64架构下Ubuntu的gcc，其target为`x86_64-linux-gnu`
-```shell
-psp@pspserver:~$ gcc -v
-Using built-in specs.
-COLLECT_GCC=gcc
-Target: x86_64-linux-gnu
-gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04)
-```
-
-对于Windows下MSYS2-mingw32的gcc
-```shell
-$ gcc -v
-Using built-in specs.
-COLLECT_GCC=C:\msys64\mingw64\bin\gcc.exe
-Target: x86_64-w64-mingw32
-gcc version 12.2.0 (Rev4, Built by MSYS2 project)
 ```
 
 ## Example

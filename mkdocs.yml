@@ -1,49 +1,49 @@
 site_name: PSP Dev Notes
 theme:
   name: material
-nav:
-  - Home: 'index.md'
-  - 'What are we building?': 'buildtarget.md'
-  - 'Setting up the environment': 'environment.md'
-  - 'What is in the PSPSDK?': 'pspdevdir.md'
-  - 'Common File Formats': 'format.md'
-  - 'Build Process': 'makefilesample.md'
-  - 'Hello World': 'helloworld.md'
-  - Commandline Tools: 'pspdevdir.md'
-  - Third Party Libraries: 'sdl.md'
-  - Resident / Stub Libraries: 
-    - Export & Import functions: 'stublibs.md'
-    - Syscall: ''
-    - 'PRX File Structure': 'prxfilestruct.md'
-    - 'PRX 2 STUB': 'prx2stub.md'
-  - Create Plugins: ''
-  - Device Capability:
-    - Display: ''
-    - Utility: 
-      - Dialog: ''
-      - OSK: ''
-      - Network: 'webrequest.md'
-      - Decode: 'videoplayback.md'
-      - I/O: ''
-      - Timer: 'time.md'
-      - Font: 'libs\font.md'
-    - VFPU: ''
-    - Media Engine: 'mediaengine.md'
-    - Module Load: 'moudleload.md'
-  - CMake: 'cmake.md'
-  - Debug: 'debug.md'
-  - Release: 'release.md'
-  - CI / CD: 'githubactions.md'
-  - Reverse Engineering:
-    - Disasm: 'assembly.md'
-    - Memory Space: 'memspace.md'
-  - Patch: 
-    - 'patch.md'
-    - 'patchexe.md'
-    - 'cwcheat.md'
-    - Localization Tutorial: 'translate.md' 
-  - Recent Projects: 'recentprojects.md'
-  - Offical SDK: 'sdks.md'
+# nav:
+#   - Home: 'index.md'
+#   - 'What are we building?': 'buildtarget.md'
+#   - 'Setting up the environment': 'environment.md'
+#   - 'What is in the PSPSDK?': 'pspdevdir.md'
+#   - 'Common File Formats': 'format.md'
+#   - 'Build Process': 'makefilesample.md'
+#   - 'Hello World': 'helloworld.md'
+#   - Commandline Tools: 'pspdevdir.md'
+#   - Third Party Libraries: 'sdl.md'
+#   - Resident / Stub Libraries: 
+#     - Export & Import functions: 'stublibs.md'
+#     - Syscall: ''
+#     - 'PRX File Structure': 'prxfilestruct.md'
+#     - 'PRX 2 STUB': 'prx2stub.md'
+#   - Create Plugins: ''
+#   - Device Capability:
+#     - Display: ''
+#     - Utility: 
+#       - Dialog: ''
+#       - OSK: ''
+#       - Network: 'webrequest.md'
+#       - Decode: 'videoplayback.md'
+#       - I/O: ''
+#       - Timer: 'time.md'
+#       - Font: 'libs\font.md'
+#     - VFPU: ''
+#     - Media Engine: 'mediaengine.md'
+#     - Module Load: 'moudleload.md'
+#   - CMake: 'cmake.md'
+#   - Debug: 'debug.md'
+#   - Release: 'release.md'
+#   - CI / CD: 'githubactions.md'
+#   - Reverse Engineering:
+#     - Disasm: 'assembly.md'
+#     - Memory Space: 'memspace.md'
+#   - Patch: 
+#     - 'patch.md'
+#     - 'patchexe.md'
+#     - 'cwcheat.md'
+#     - Localization Tutorial: 'translate.md' 
+#   - Recent Projects: 'recentprojects.md'
+#   - Offical SDK: 'sdks.md'
     
 markdown_extensions:
   - pymdownx.superfences

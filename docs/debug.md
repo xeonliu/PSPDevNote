@@ -19,6 +19,20 @@
 ## Debug Using `pspsh` & `psp-gdb`
 使用实机Debug有很多好处
 
+## PSPLink
+
+PSPLink is a development tool which provides a text terminal on the PSP.
+Some of the features it provides are:
+Terminal access through SIO, Wifi or USB.
+Access to the PC’s file system through USB and the host: device
+Preconfigured tty (stdin, stdout, stderr)
+Exception handler for catching software bugs
+Remote GDB stub over Wifi and USB for source level debugging
+Real time kernel inspection (Thread/Module lists, memory dumping
+and patching
+
+## [PSPInside](https://www.gamebrew.org/wiki/PSPInside)
+
 ## Debug Using `PPSSPP`
 > + [《诡计对逻辑》汉化研究](https://pbteam.cn/posts/txl-hack/)
 > + https://datacrystal.romhacking.net/wiki/Blaze_Union/Tutorials
@@ -34,21 +48,13 @@ PPSSPP自带的调试工具算很强大了。简要介绍一下它的功能。
 
 几种内存地址的变换
 
-+ psp的内存地址空间
++ PSP的内存地址空间
 + Dump出的内存
 + ELF中的vmaddr
-+ ELF的二进制文件
 
-<<<<<<< HEAD
-## Remote debug for `PPSSPP`
-PPSSPP supports WebSocket Debugging.
-
-## Makefile Example (From RetroArch)
-=======
 ### Debug using `PPSSPP` with `Ghidra`
 
 ## Makefile Example (From `RetroArch`)
->>>>>>> 04bea76e94d934b878c995d594ce433b4f3be225
 + After `include`
 ```Makefile
 debug:
