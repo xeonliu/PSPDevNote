@@ -1,0 +1,1512 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../archive/readme/">
+      
+      
+        <link rel="next" href="../../locolization/iso/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+    
+    
+      
+        <title>PGF file - PSP Dev Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pgf-file" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="PSP Dev Notes" class="md-header__button md-logo" aria-label="PSP Dev Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PSP Dev Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PGF file
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PSP Dev Notes" class="md-nav__button md-logo" aria-label="PSP Dev Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    PSP Dev Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to PSPDevNotes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDLDev/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SDL2 Development Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../buildformsource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build PSPDEV from source
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../buildtarget/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    我们要构建的是什么？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cmake/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Working with CMake
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cwcheat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Patching Using CW Cheat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Set Up the Environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../format/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Format Specification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../githubactions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../helloworld/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Our first example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../makefilesample/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Makefile Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mediaengine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Media Engine (ME): PSP's second CPU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Patching an existing PSP Game
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patchexe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Patching an Executable File
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../profiling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Profiling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prx2stub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    从已有的PRX模块生成Stub Library
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prxfilestruct/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PRX中包含的信息
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pspdevdir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PSPDEV Directory Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recentprojects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    近年项目
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UMD Image File
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cooperating with different SDKs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Working with other libraries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stublibs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stub Libraries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../time/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time / Timer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../videoplayback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    播放视频的可能性？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webrequest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    进行网络请求
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_28" >
+        
+          
+          <label class="md-nav__link" for="__nav_28" id="__nav_28_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_28_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_28">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Readme
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_29" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_29" id="__nav_29_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Libs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_29_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_29">
+            <span class="md-nav__icon md-icon"></span>
+            Libs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    PGF file
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    PGF file
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#manipulating-pgf-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manipulating PGF Files.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_30" >
+        
+          
+          <label class="md-nav__link" for="__nav_30" id="__nav_30_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Locolization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_30_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_30">
+            <span class="md-nav__icon md-icon"></span>
+            Locolization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../locolization/iso/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UMD文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../locolization/patch_exec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改二进制文件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../locolization/translate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Language Patch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_31" >
+        
+          
+          <label class="md-nav__link" for="__nav_31" id="__nav_31_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Plugin
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_31_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_31">
+            <span class="md-nav__icon md-icon"></span>
+            Plugin
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugin/assembly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MIPS汇编
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugin/memspace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Address Space 内存地址空间
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugin/moduleload/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    程序加载
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugin/thread/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线程（Thread）
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#manipulating-pgf-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manipulating PGF Files.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="pgf-file">PGF file</h1>
+<p>PPSSPP有PGF文件的解析实现。</p>
+<h2 id="manipulating-pgf-files">Manipulating PGF Files.</h2>
+<blockquote>
+<p>A Commandline tool for manipulating PGF File</p>
+<blockquote>
+<p><a href="https://github.com/tpunix/pgftool">PGFTool</a></p>
+</blockquote>
+<p>A Windows Tool for manipulating PGF file</p>
+<blockquote>
+<p><a href="https://github.com/niuhuan/psp-pixels">PSP-Pixels</a></p>
+</blockquote>
+<p>An old and more general Locolization Tool in Chinese. </p>
+<blockquote>
+<p><a href="https://github.com/IanusInferus/firefly/">Firefly</a></p>
+</blockquote>
+</blockquote>
+<h1 id="libfont">libFont</h1>
+<p>PPSSPP有一个libFont的实现。</p>
+<p>charCode is UCS2.
+UCS2，可认为是UTF-16用二个字节来表示基本平面</p>
+<p>UTF-16 编码表
+Unicode 中的一个编码区段，编码从 U+0000 至 U+FFFF，也称基本多文种平面（Basic Multilingual Plane，BMP），或第零平面（Plane 0）。</p>
+<p>Unicode 编码规定以下字符范围为控制字符，\U0000 - \U001F, \U007F, \U0080 - \U009F。</p>
+<p>UCS-2 用 0x0000 - 0xFFFF 代表所有UTF-8的字符。 假设一个字符为16x16, 一个byte（8Bit）可以代表8个点, 32个byte就可以代表一个字, 2Mib刚好表示整个UCS-2字库。</p>
+<p>PSP在使用的时候, 跟据UCS2编码可以直接算出偏移量, 并取出32个byte, 进行位运算, 打印出一个字符.</p>
+<h1 id="pgf">PGF</h1>
+<p>26.9  PGF</p>
+<p>The PSP font format (.PGF files) is a bitmap based font format. Each letter (as well as its shadow) is a single, 4bpp bitmap, saved in the font file in a RLE compressed form. The bitmaps are encoded using either vertical or horizontal rows, depending on a certain 2-bit field in character metrics. Every [character, shadow] bitmap pair is preceded by a character metrics record. For Latin fonts the length of this record appears to be 12 bytes (with an optional 7-byte extension), for other families it's different. It's not known at this time what is the determinant of the record length. The metrics record contains the following fields:
+14-bit offset of the shadow header record
+7-bit width
+7-bit height
+7-bit signed horizontal adjustment
+7-bit ascender
+2-bit transposition (1 - horizontal rows, 2 - vertical rows)
+1-bit modified record field (adds a 7-byte extension to the 12-byte header for ltn0.pgf)
+46 bits of unknown data
+5-bit horizontal advance
+To find the character metrics one has to read the main pointer table. The table is constructed of N-bit pointers, where N is found in the file header at offset 0x1C. The number of pointers (and characters) can be found in the file header at offset 0x14. It is not known yet how to locate the main pointer table. The RLE compression works on 4-bit nibbles (the low nibble of a byte is considered to precede the high nibble in the stream). There are two sequences defined for this RLE:
+a nibble N&lt;8: take next nibble and replicate N+1 times into the output stream
+a nibble N&gt;7: take next 16-N nibbles and copy directly into the output stream</p>
+<p>上面的文章好像是针对拉丁字符的，中文字符感觉要参考一下国内的程序，或者PPSSPP。</p>
+<p><code>liquidzigong</code>?
+<code>TPU</code>?</p>
+<p>怪物猎人？
+梦幻之星携带版2等？
+<code>oldfont.prx</code>?</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Name:    fontfuck
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Attrib:  0000
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Version: 1.1
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>GP:      00008EF0
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Exports:
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Export 0, Name syslib, Functions 1, Variables 1, flags 80000000
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Export 1, Name sceLibFont, Functions 15, Variables 0, flags 00010000
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Imports:
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Import 0, Name sceLibFttt, Functions 27, Variables 0, flags 00090011
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>Import 1, Name IoFileMgrForUser, Functions 5, Variables 0, flags 40010000
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>Import 2, Name ModuleMgrForUser, Functions 2, Variables 0, flags 40010000
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>Import 3, Name StdioForUser, Functions 1, Variables 0, flags 40010000
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>Import 4, Name ThreadManForUser, Functions 4, Variables 0, flags 40010000
+</span></code></pre></div>
+<p>https://gist.github.com/TellowKrinkle/3414f704ba39d4dea5773df5a6f53f3c</p>
+<p>new Module("sceLibFttt",
+            new SCE(0x67f17ed7, "sceFontNewLib", 'x', "xx"),
+            new SCE(0x574b6fbc, "sceFontDoneLib", 'i', "x"),
+            new SCE(0x48293280, "sceFontSetResolution", 'i', "xff"),
+            new SCE(0x27f6e642, "sceFontGetNumFontList", 'i', "xx"),
+            new SCE(0xbc75d85b, "sceFontGetFontList", 'i', "xxi"),
+            new SCE(0x099ef33c, "sceFontFindOptimumFont", 'i', "xxx"),
+            new SCE(0x681e61a7, "sceFontFindFont", 'i', "xxx"),
+            new SCE(0x2f67356a, "sceFontCalcMemorySize", 'i', ""),
+            new SCE(0x5333322d, "sceFontGetFontInfoByIndexNumber", 'i', "xxx"),
+            new SCE(0xa834319d, "sceFontOpen", 'x', "xxxx"),
+            new SCE(0x57fcb733, "sceFontOpenUserFile", 'x', "xsxx"),
+            new SCE(0xbb8e7fe6, "sceFontOpenUserMemory", 'x', "xxxx"),
+            new SCE(0x3aea8cb6, "sceFontClose", 'i', "x"),
+            new SCE(0x0da7535e, "sceFontGetFontInfo", 'i', "xx"),
+            new SCE(0xdcc80c2f, "sceFontGetCharInfo", 'i', "xxx"),
+            new SCE(0xaa3de7b5, "sceFontGetShadowInfo", 'i', "xxx"),
+            new SCE(0x5c3e4a9e, "sceFontGetCharImageRect", 'i', "xxx"),
+            new SCE(0x48b06520, "sceFontGetShadowImageRect", 'i', "xxx"),
+            new SCE(0x980f4895, "sceFontGetCharGlyphImage", 'i', "xxx"),
+            new SCE(0xca1e6945, "sceFontGetCharGlyphImage_Clip", 'i', "xxxiiii"),
+            new SCE(0x74b21701, "sceFontPixelToPointH", 'f', "ifx"),
+            new SCE(0xf8f0752e, "sceFontPixelToPointV", 'f', "ifx"),
+            new SCE(0x472694cd, "sceFontPointToPixelH", 'f', "ifx"),
+            new SCE(0x3c4b7e82, "sceFontPointToPixelV", 'f', "ifx"),
+            new SCE(0xee232411, "sceFontSetAltCharacterCode", 'i', "xx"),
+            new SCE(0x568be516, "sceFontGetShadowGlyphImage", 'i', "xxx"),
+            new SCE(0x5dcf6858, "sceFontGetShadowGlyphImage_Clip", 'i', "xxxiiii"),
+            new SCE(0x02d7f94b, "sceFontFlush", 'i', "x")
+        ),</p>
+<p>Module("sceLibFont",
+            new SCE(0x67f17ed7, "sceFontNewLib", 'x', "xx"),
+            new SCE(0x574b6fbc, "sceFontDoneLib", 'i', "x"),
+            new SCE(0x48293280, "sceFontSetResolution", 'i', "xff"),
+            new SCE(0x27f6e642, "sceFontGetNumFontList", 'i', "xx"),
+            new SCE(0xbc75d85b, "sceFontGetFontList", 'i', "xxi"),
+            new SCE(0x099ef33c, "sceFontFindOptimumFont", 'i', "xxx"),
+            new SCE(0x681e61a7, "sceFontFindFont", 'i', "xxx"),
+            new SCE(0x2f67356a, "sceFontCalcMemorySize", 'i', ""),
+            new SCE(0x5333322d, "sceFontGetFontInfoByIndexNumber", 'i', "xxx"),
+            new SCE(0xa834319d, "sceFontOpen", 'x', "xxxx"),
+            new SCE(0x57fcb733, "sceFontOpenUserFile", 'x', "xsxx"),
+            new SCE(0xbb8e7fe6, "sceFontOpenUserMemory", 'x', "xxxx"),
+            new SCE(0x3aea8cb6, "sceFontClose", 'i', "x"),
+            new SCE(0x0da7535e, "sceFontGetFontInfo", 'i', "xx"),
+            new SCE(0xdcc80c2f, "sceFontGetCharInfo", 'i', "xxx"),
+            new SCE(0xaa3de7b5, "sceFontGetShadowInfo", 'i', "xxx"),
+            new SCE(0x5c3e4a9e, "sceFontGetCharImageRect", 'i', "xxx"),
+            new SCE(0x48b06520, "sceFontGetShadowImageRect", 'i', "xxx"),
+            new SCE(0x980f4895, "sceFontGetCharGlyphImage", 'i', "xxx"),
+            new SCE(0xca1e6945, "sceFontGetCharGlyphImage_Clip", 'i', "xxxiiii"),
+            new SCE(0x74b21701, "sceFontPixelToPointH", 'f', "ifx"),
+            new SCE(0xf8f0752e, "sceFontPixelToPointV", 'f', "ifx"),
+            new SCE(0x472694cd, "sceFontPointToPixelH", 'f', "ifx"),
+            new SCE(0x3c4b7e82, "sceFontPointToPixelV", 'f', "ifx"),
+            new SCE(0xee232411, "sceFontSetAltCharacterCode", 'i', "xx"),
+            new SCE(0x568be516, "sceFontGetShadowGlyphImage", 'i', "xxx"),
+            new SCE(0x5dcf6858, "sceFontGetShadowGlyphImage_Clip", 'i', "xxxiiii"),
+            new SCE(0x02d7f94b, "sceFontFlush", 'i', "x")
+)</p>
+<p>font_fuck library 还不止一种，有许多变种，但是大体上应该是一致的。</p>
+<p>29个
+sceFontisElement?</p>
+<p>23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1333 sceFontGetCharInfo(08c4c05c, 27700, 09ff72f0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1434 sceFontGetCharGlyphImage(8c4c05c, 6c34, 9ff72d0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1333 sceFontGetCharInfo(08c4c05c, 28304, 09ff72f0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1434 sceFontGetCharGlyphImage(8c4c05c, 6e90, 9ff72d0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1333 sceFontGetCharInfo(08c4c05c, 21551, 09ff72f0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1434 sceFontGetCharGlyphImage(8c4c05c, 542f, 9ff72d0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1333 sceFontGetCharInfo(08c4c05c, 21160, 09ff72f0)
+23:25:362 user_main    D[SCEFONT]: HLE\sceFont.cpp:1434 sceFontGetCharGlyphImage(8c4c05c, 52a8, 9ff72d0)</p>
+<p>0x9480</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">/// param_1 SHIFT_JIS Code</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">undefined2</span><span class="w"> </span><span class="nf">FUN_08884680</span><span class="p">(</span><span class="n">uint</span><span class="w"> </span><span class="n">param_1</span><span class="p">)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="n">undefined4</span><span class="w"> </span><span class="n">uVar1</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="n">undefined4</span><span class="w"> </span><span class="n">uVar2</span><span class="p">;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="n">uint</span><span class="w"> </span><span class="n">uVar3</span><span class="p">;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="n">param_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xffff</span><span class="p">;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="c1">// Find in 0~0x2d</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="n">uVar1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="n">uVar2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2d</span><span class="p">;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DAT_08a33310</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">param_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="c1">// Find in 0x2e &lt;= index &lt; 0x5a</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="n">uVar1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2e</span><span class="p">;</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="n">uVar2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x5a</span><span class="p">;</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">param_1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">DAT_08a33310</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">      </span><span class="c1">// At 0x2d</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">      </span><span class="n">uVar3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2d</span><span class="p">;</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">      </span><span class="k">goto</span><span class="w"> </span><span class="n">LAB_088846d0</span><span class="p">;</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">  </span><span class="c1">// Get the index in the 2nd Table</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">  </span><span class="n">uVar3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FUN_08884724</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="n">uVar1</span><span class="p">,</span><span class="n">uVar2</span><span class="p">);</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">  </span><span class="n">uVar3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uVar3</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xffff</span><span class="p">;</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="nl">LAB_088846d0</span><span class="p">:</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">undefined2</span><span class="w"> </span><span class="o">*</span><span class="p">)</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">          </span><span class="p">(</span><span class="o">&amp;</span><span class="n">DAT_08a2fb60</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">          </span><span class="c1">//(</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">          </span><span class="c1">//(param_1 - *(ushort *)(&amp;DAT_08a3325c + uVar3 * 4)) </span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">          </span><span class="c1">//+</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">          </span><span class="c1">// Table 2 at 0x8a3325e</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">          </span><span class="p">(</span><span class="n">uint</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">ushort</span><span class="w"> </span><span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">DAT_08a3325e</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">uVar3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">          </span><span class="p">)</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">           </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="p">}</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="c1">/// param_1: SHIFT_JIS Code</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="n">uint</span><span class="w"> </span><span class="nf">FUN_08884724</span><span class="p">(</span><span class="n">ushort</span><span class="w"> </span><span class="n">param_1</span><span class="p">,</span><span class="n">uint</span><span class="w"> </span><span class="n">param_2</span><span class="p">,</span><span class="n">uint</span><span class="w"> </span><span class="n">param_3</span><span class="p">)</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="p">{</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">  </span><span class="n">uint</span><span class="w"> </span><span class="n">uVar1</span><span class="p">;</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">  </span><span class="n">uint</span><span class="w"> </span><span class="n">uVar2</span><span class="p">;</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">  </span><span class="n">uint</span><span class="w"> </span><span class="n">uVar3</span><span class="p">;</span>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">  </span><span class="n">param_3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_3</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xffff</span><span class="p">;</span>
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">  </span><span class="n">param_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xffff</span><span class="p">;</span>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">  </span><span class="c1">// mid = (high+lo)/2;</span>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">  </span><span class="n">uVar3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">param_2</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">  </span><span class="c1">// high = mid - 1;</span>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="w">  </span><span class="n">uVar1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xffff</span><span class="p">;</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">param_3</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">param_2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="w">     </span><span class="p">((</span><span class="n">uVar2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uVar3</span><span class="p">,</span><span class="w"> </span><span class="n">param_1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">ushort</span><span class="w"> </span><span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">DAT_08a3325c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">uVar3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">      </span><span class="p">(</span><span class="n">param_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uVar3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xffff</span><span class="p">,</span><span class="w"> </span><span class="n">uVar2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_3</span><span class="p">,</span><span class="w"> </span><span class="n">uVar1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uVar3</span><span class="p">,</span>
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="w">      </span><span class="o">*</span><span class="p">(</span><span class="n">ushort</span><span class="w"> </span><span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">DAT_08a3325c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">uVar3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">param_1</span><span class="p">))))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">    </span><span class="n">uVar1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FUN_08884724</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="n">param_2</span><span class="p">,</span><span class="n">uVar2</span><span class="p">);</span>
+</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="w">  </span><span class="c1">// param1 &gt;= *(ushort *)(&amp;DAT_08a3325c + uVar3 * 4)</span>
+</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">uVar1</span><span class="p">;</span>
+</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>08a3325c -&gt; 0~0x5a</p>
+<p>20 00 00 00 a1 00 5f 00 40 81 9e 00 80 81 dd 00 b8 81 0a 01 c8 81 12 01 da 81 19 01 f0 81 28 01 fc 81 30 01 4f 82 31 01 60 82 3b 01 81 82 55 01 9f 82 6f 01 40 83 c2 01 80 83 01 02 9f 83 18 02 bf 83 30 02 40 84 48 02 70 84 69 02 80 84 78 02 9f 84 8a 02 9f 88 aa 02 40 89 08 03 80 89 47 03 40 8a c4 03 80 8a 03 04 40 8b 80 04 80 8b bf 04 40 8c 3c 05 80 8c 7b 05 40 8d f8 05 80 8d 37 06 40 8e b4 06 80 8e f3 06 40 8f 70 07 80 8f af 07 40 90 2c 08 80 90 6b 08 40 91 e8 08 80 91 27 09 40 92 a4 09 80 92 e3 09 40 93 60 0a 80 93 9f 0a 40 94 1c 0b 80 94 5b 0b 40 95 d8 0b 80 95 17 0c 40 96 94 0c 80 96 d3 0c 40 97 50 0d 80 97 8f 0d 40 98 0c 0e 9f 98 3f 0e 40 99 9d 0e 80 99 dc 0e 40 9a 59 0f 80 9a 98 0f 40 9b 15 10 80 9b 54 10 40 9c d1 10 80 9c 10 11 40 9d 8d 11 80 9d cc 11 40 9e 49 12 80 9e 88 12 40 9f 05 13 80 9f 44 13 40 e0 c1 13 80 e0 00 14 40 e1 7d 14 80 e1 bc 14 40 e2 39 15 80 e2 78 15 40 e3 f5 15 80 e3 34 16 40 e4 b1 16 80 e4 f0 16 40 e5 6d 17 80 e5 ac 17 40 e6 29 18 80 e6 68 18 40 e7 e5 18 80 e7 24 19 40 e8 a1 19 80 e8 e0 19 40 e9 5d 1a 80 e9 9c 1a 40 ea 19 1b 80 ea 58 1b</p>
+<p>00000020 005f00a1 009e8140 00dd8180 010a81b8 011281c8 011981da 012881f0 013081fc 0131824f 013b8260 01558281 016f829f 01c28340 02018380 0218839f 023083bf 02488440 02698470 02788480 028a849f 02aa889f 03088940 03478980 03c48a40 04038a80 04808b40 04bf8b80 053c8c40 057b8c80 05f88d40 06378d80 06b48e40 06f38e80 07708f40 07af8f80 082c9040 086b9080 08e89140 09279180 09a49240 09e39280 0a609340 0a9f9380 0b1c9440 0b5b9480 0bd89540 0c179580 0c949640 0cd39680 0d509740 0d8f9780 0e0c9840 0e3f989f 0e9d9940 0edc9980 0f599a40 0f989a80 10159b40 10549b80 10d19c40 11109c80 118d9d40 11cc9d80 12499e40 12889e80 13059f40 13449f80 13c1e040 1400e080 147de140 14bce180 1539e240 1578e280 15f5e340 1634e380 16b1e440 16f0e480 176de540 17ace580 1829e640 1868e680 18e5e740 1924e780 19a1e840 19e0e880 1a5de940 1a9ce980 1b19ea40 1b58ea80</p>
+<p>第二位，
+40-7E
+80-FC</p>
+<p>仅仅有编码的区域被列入。
+ea80-eaa4
+最末一位偏移量 1b58 + 25 = 1B7d = 7037</p>
+<p>恰好为SHIFT-JIS编码总数
+（7070？）有待查询，或许有些许删节。</p>
+<p>GB2312有6763个汉字+682个全角字符。</p>
+<p>字体替换：将对SceFontOpen的调用变为SceFontOpenUserFile的调用。
+不知道Fontfuck Library的适用程度如何。</p>
+<p>处于某些原因，PPSSPP无法正确解析PGF文件？可能是其SceFont实现有一些问题？
+Jpcsp对于现成的字体没有什么问题。</p>
+<p>CLANNED用的是微软雅黑，对字库进行了修改。
+Jpcsp使用的是Resource Han Rounded CN，可以说是对于中文用户十分友好了。
+MGSPW用的是微软雅黑Bold，没有对字库进行修改。Font='Microsoft YaHei UI' Type='Bold'</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>04bea76e94d934b878c995d594ce433b4f3be225</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
