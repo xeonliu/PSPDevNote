@@ -23,7 +23,6 @@ Homepage: https://xeonliu.github.io/PSPDevNote/
   	- [x] 导入外部`prx`模块（动态链接）
 		- [x] Stub/Resident Libraries
 		- [x] PRX文件
-		- [ ] 系统调用
 		- [ ] 编写插件
 - [ ] 设备功能
 	- [ ] 显示
@@ -42,8 +41,8 @@ Homepage: https://xeonliu.github.io/PSPDevNote/
 	- [ ] ISO / CSO
 - [x] Github Actions 自动构建
 - [ ] 补丁（逆向工程）
-    - [ ] MIPS汇编
-    - [ ] 内存地址空间
+    - [x] MIPS汇编
+    - [x] 内存地址空间
     - [ ] 静态修改（ELF文件）
     - [ ] 动态修改（插件/CWCheat）
     - [ ] 汉化教程
@@ -59,6 +58,8 @@ Homepage: https://xeonliu.github.io/PSPDevNote/
 ## 抱怨
 全是deprecated和temporary fix.必须靠询问来得知各种使用方法best practice
 另一方面必须要有能阅读上游代码的能力。
+
+CS:APP显然不足以解释清楚PSP的软硬件，尤其是涉及到中断、硬件寄存器操作等话题时，这得交给OS相关的课程。
 
 ## 致谢
 + PSPDEV / PSPSDK(Unofficial)
