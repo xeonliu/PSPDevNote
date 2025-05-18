@@ -58,6 +58,7 @@ Homepage: https://xeonliu.github.io/PSPDevNote/
 
 ## 抱怨
 全是deprecated和temporary fix.必须靠询问来得知各种使用方法best practice
+另一方面必须要有能阅读上游代码的能力。
 
 ## 致谢
 + PSPDEV / PSPSDK(Unofficial)
