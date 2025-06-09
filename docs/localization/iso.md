@@ -7,3 +7,7 @@
     + EBOOT.BIN：加密的游戏主程序文件
 + USRDIR
     + 储存各类资源文件，包括模块（Module）等
+
+
+# LBA寻址
+https://blog.csdn.net/qqj_1228/article/details/5092558

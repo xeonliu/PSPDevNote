@@ -8,6 +8,8 @@
 
 ### 劫持对外部模块的调用
 
+https://uofw.github.io/upspd/docs/software/ModuleTutorialv1.pdf
+
 + 劫持对`libfont.prx`中函数的调用，实现字体替换等操作。
 + 劫持对`sceUtils`的调用，修改存档等界面的语言。
 

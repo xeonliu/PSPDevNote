@@ -5,6 +5,11 @@
 > [digipet_PSP/RE_Guide.md](https://github.com/Bunkai9448/digipet_PSP/blob/main/RE_Guide.mdDigivice) 
 
 # 汉化相关
+
+Usually Chinese Language Patchs are based on Japanese Games. 
+
+Typically only the Character Set size used by the Japanese games is large enough to fit in COMMON Chinese characters.
+
 ## 传统汉化方法
 > !!! Hint
 > + 码表：即编码字节同字符的对应表。
@@ -31,7 +36,7 @@
 > 
 >   + [【GBA、NDS、PSP】汉化基础教程——文字篇（三）by PGCG](https://bbs.chengyi.org/thread-111286-1-1.html)
 >   + [NDS汉化小白教程 —— fengarea（A9VG汉化组）](https://xiongonline.github.io/[%E8%BD%AC%E8%BD%BD][NDS]NDS%E6%B1%89%E5%8C%96%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B.html#top) 第三话：字库码表篇•初步
->   + [游戏汉化教学贴-文本的导入导出基础篇](archive/bluekiller.htm)
+>   + [游戏汉化教学贴-文本的导入导出基础篇](../archive/bluekiller_GIM/bluekiller.htm)
 
 ### 理想情况
 能够从二进制文件和资源文件中找到字符串和字库，直接进行修改。
@@ -53,68 +58,21 @@
 按照传统的汉化方法，只需要对资源文件和可执行文件中出现的代表字符串的`字节序列`和`字库`进行修改汉化工作便完成了。这一步的难点就在文件格式的解密上。
 
 具体来讲，对于`PSP`汉化，可以通过`PPSSPP`的调试功能逐步分析文件格式。可以参考[《诡计对逻辑》汉化研究](https://pbteam.cn/posts/txl-hack/)
+
+关于提取，也可以参考“南德小学生”在B站发布的相关汉化视频。
+
 ### 修改可执行文件/添加外部插件
 对于一些需要使用内存汉化法或者调用的是系统字库的游戏，则需要进行程序逻辑的修改或者编写新的插件。也就是要进行反汇编、注入、劫持等操作。这更接近于本网站的主题。
 
-https://uofw.github.io/upspd/docs/software/ModuleTutorialv1.pdf
+## 常见格式
 
-patch prx on runtime？
+储存在资源文件中的图像具有多种格式。
 
-z_un_088679c0
-fcn.000639c0
-a1: 0x8CB4
-内部调用
-...
-z_un_088691b0
-v0:0x539F
-最终返回
+其中主流格式有：
++ 索尼官方支持的`GIM`：可以使用`GimConv`或GitHub上有关脚本进行转换
++ 通过Crystal Tile进行分析
++ ...
 
-8CB4-> 539F
+检测资源文件中存在的SJIS字符串
 
-08868dac调用sceFontGetCharInfo和sceFontGetCharGlyph
-
-# Python处理字符串、字节流
-字符串转字节流
-```python
-binary_stream = v.encode('utf-16-le')
-```
-
-字节流转16进制字符串
-```py
-import binascii
-binascii.hexlify(binary_stream).decode('utf-8')
-```
-
-16进制字符串转字节序列
-```py
-binascii.unhexlify(hex_str)
-```
-
-
-字符串数组拼接
-```py
-''.join(s for s in array)
-```
-
-置换字典k,v
-```py
-reverse_data = {v:k for k, v in data.items()}
-```
-
-```py
-# Encode the string
-encoded_s = [reverse_data[char] for char in str if char in reverse_data]
-```
-
-dump to json
-```py
-with open('output2.json', 'w', encoding='utf-8') as f:
-    json.dump(byte_char_dict, f, ensure_ascii=False, indent=4)
-```
-
-```
-# with open(output_file_path, "wb") as output_file:
-#     for k, v in data.items():
-#         b = v.encode('utf-16-le')
-#         output_file.write(b)
-```
++ TODO

@@ -12,7 +12,7 @@ SceUID thid ;
 thid = sceKernelCreateThread(”MyThread” , // Name
     mythread,// Entry Point
     20, // Priority
-    16384, // Stack Size
+    0x4000, // Stack Size
     0, // Attribute
     NULL);
 

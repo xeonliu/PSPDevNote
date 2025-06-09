@@ -1,12 +1,18 @@
 # MIPS汇编
 PSP的CPU采用MIPS架构，32位。ISA与规范略有变化
 
++ IDA Pro可以直接解析
++ Ghidra 在插件辅助下可以解析
+
 > 推荐阅读
 > 
 > + 《CS:APP》 Chapter 3
 > + [uOFW Wiki](https://github.com/uofw/uofw/wiki/MIPS)：
 > MIPS, Logical Blocks, Functions 三节
 > + Module Tutorial
+
+# A Programmer's Perspective
+与CS:APP宗旨类似，我们主要观察gcc编译后和objdump出汇编文件的内容。
 
 # psp-gcc
 `psp-gcc`是为生成PSP可执行文件而修改过的`gcc`，位于`pspdev/bin`文件夹下
@@ -22,9 +28,6 @@ COLLECT_GCC=psp-gcc
 Target: psp
 gcc version 11.2.0 (GCC)
 ```
-# Decompiler
-这里我们使用`IDA Pro` / `Ghidra` / `prxtool` 对文件进行反汇编，并对生成的汇编代码进行研究，
-或者可以使用`PPSSPP`的调试功能进行断点查看。
 
 ## Example
 
@@ -33,7 +36,7 @@ void mult2(int* a,int *b, int *c){
         *c = *a**b;
 }
 ```
-TODO：应该使用a0,a1等表示寄存器。
+
 ```asm
 <!-- a in $4 , b in $5, c in $6 -->
 mult2:
@@ -65,3 +68,16 @@ Here are the instructions that do this. The operands are contained in general-pu
 
 mult    s,t        # hilo <— $s * $t   (two's comp operands)
 multu   s,t        # hilo <— $s * $t   (unsigned operands)
+
+## Arithmetic Instructions
+
+|用途|指令|参数|作用|注释|
+|-|-|-|-|-|
+|Smaller Than|`slt`|`$r1, $r2, $r3`|`r1 = r2 < r3`|Signed|
+||`slti`|`$r1, $r2, $num`|
+`slt`: Smaller Than (Signed)
+
+`slt $r1, $r2, $r3`: r1 = r2 < r3
+
+`slti`: Smaller Than (Signed) (Immediate)
+
