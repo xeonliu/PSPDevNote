@@ -2,14 +2,17 @@
 
 由于时代原因，许多网页已不可达，暂收录于此，待原作者联系。
 
-[Xinyu Online](https://web.archive.org/web/20080122063606/http://www.xinyuonline.net:80/blog/?action=show&id=15)
+技术文章。
 
-[：：：：zxp ONLINE：：：：]
+## 博客
+- [Xinyu Online](https://web.archive.org/web/20080122063606/http://www.xinyuonline.net:80/blog/?action=show&id=15)
+
+- [zxp Online]
 (http://www.zxp.net.cn/Bo-Blog/page/1/5/)
 
-[大众高尔夫](https://blog.csdn.net/jerryutscn/article/details/5780531)
+- [大众高尔夫](https://blog.csdn.net/jerryutscn/article/details/5780531)
 
-## YuriSizuku
+### YuriSizuku
 
 + [YuriSizuku/GalgameReverse](https://github.com/YuriSizuku/GalgameReverse)
 
