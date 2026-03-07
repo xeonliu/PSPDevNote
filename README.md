@@ -7,45 +7,45 @@ Homepage: https://xeonliu.github.io/PSPDevNote/
 
 [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
-- [x] 构建的目标
-- [ ] 环境配置
+- [x] Targets of Build
+- [ ] Environment Setup
 	- [x] PSPDEV
-	- [x] VSCode
-- [ ] PSPDEV目录结构
-- [ ] 编译体系
-	- [ ] 如何 Build from source
-	- [x] Makefile 示例解析
-- [ ] PSP 文件格式
+	- [x] VS Code
+- [ ] PSPDEV Directory Structure
+- [ ] Build System
+	- [ ] How to Build from Source
+	- [x] Break Down Makefile Sample
+- [ ] File Formats used on PSP
 - [ ] Hello World
-- [ ] 命令行工具详解（参数、源代码）
-- [ ] 链接
-	- [x] 引入第三方库（静态链接）
-  	- [x] 导入外部`prx`模块（动态链接）
-		- [x] Stub/Resident Libraries
-		- [x] PRX文件
-		- [ ] 编写插件
-- [ ] 设备功能
-	- [ ] 显示
-	- [ ] 实用程序(Utility)
-		- [ ] 弹窗(Dialog)
-		- [ ] 屏幕键盘(On Screen Keyboard. A.k.a OSK)
-	- [ ] 网络
-	- [x] 视频解码
+- [ ] Command-Line Tools (Arguments, Source Code)
+- [ ] Link
+	- [x] Use Third-Party Libraries（Static Link）
+  	- [x] Import External PRX Modules (Dynamic Link)
+		- [x] Stub / Resident Libraries
+		- [x] PRX File
+		- [ ] Write Plugins
+- [ ] Device Capability
+	- [ ] Screen
+	- [ ] Utility
+		- [ ] Dialog
+		- [ ] On Screen Keyboard. A.k.a OSK
+	- [ ] Network
+	- [x] Video Decode
 	- [ ] I/O
-	- [ ] 时间
-- [ ] 调试
+	- [ ] Time
+- [ ] Debug
   - [ ] PSPLink
   - [ ] PPSSPP
-- [ ] 发布
+- [ ] Release
 	- [x] EBOOT.PBP
 	- [ ] ISO / CSO
-- [x] Github Actions 自动构建
-- [ ] 补丁（逆向工程）
-    - [x] MIPS汇编
-    - [x] 内存地址空间
-    - [ ] 静态修改（ELF文件）
-    - [ ] 动态修改（插件/CWCheat）
-    - [ ] 汉化教程
+- [x] Github Actions CI
+- [ ] Patches (Reverse Engineering)
+    - [x] MIPS Assembly
+    - [x] Memory Address Space
+    - [ ] Edit Staticly（ELF File）
+    - [ ] Edit Dynamically（插件/CWCheat）
+    - [ ] Localization Tutorial
 
 ## Roadmap
 
@@ -55,13 +55,13 @@ Homepage: https://xeonliu.github.io/PSPDevNote/
 
 + 如欲对现有游戏进行汉化，请阅读StubLib、Debug及Reverse Engineering和Patch一节。
 
-## 抱怨
+## Complaints
 全是deprecated和temporary fix.必须靠询问来得知各种使用方法best practice
 另一方面必须要有能阅读上游代码的能力。
 
 CS:APP显然不足以解释清楚PSP的软硬件，尤其是涉及到中断、硬件寄存器操作等话题时，这得交给OS相关的课程。
 
-## 致谢
+## Acknowledgement
 + PSPDEV / PSPSDK(Unofficial)
 + PSP Homebrew Discord
 + rust-psp
