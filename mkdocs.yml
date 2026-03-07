@@ -27,6 +27,7 @@ nav:
       - I/O: ''
       - Timer: 'time.md'
       - Font: 'libs\font.md'
+    - USB: 'usb.md'
     - VFPU: ''
     - Media Engine: 'mediaengine.md'
     - Module Load: 'moudleload.md'

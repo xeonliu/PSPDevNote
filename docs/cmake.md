@@ -1,5 +1,7 @@
 # Working with CMake
 
+`pspdev` 提供了完整的脚本以支持使用 CMake 构建应用。
+
 ## psp-cmake
 Nothing but a Shell Script. Passing the Toolchain file to CMake.
 
@@ -224,3 +226,17 @@ Using `./configure`
 View pspdev/psp-packages for more info
 + `patch` file
 + `BUILD` file
+
+### 代码跳转与自动补全
+
+VSCode 中的 `clangd` 插件为代码提示提供了极好的支持。
+为了使用语法提示，需要`compile_commands.json`文件，其内部包括了各种编译指令。
+对于 CMake 项目，可以通过添加`-DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE`生成`compile_commands.json`文件
+
+```bash
+mkdir build
+cd build
+cmake .. -DCMAKE_TOOLCHAIN_FILE="${PSPDEV}/psp/share/pspdev.cmake" -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE
+```
+
+生成后的文件位于`build`目录下，`clangd`通常能正确识别。
