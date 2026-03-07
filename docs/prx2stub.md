@@ -21,47 +21,50 @@
 
 
 1. 使用`prxtool`从`prx`模块提取得到导出表（`Export Table`,`.exp`文件）
-`prxtool sample.prx -p`生成exports.exp
-    >  **导出表(Export Table)**
-    >
-    > `prx`文件的导出表可以类比Windows PE文件（如DLL文件）中的导出表。
-    >
-    >导出表包含了一个模块显式向其他模块公开供其使用的符号列表。
-    >
-    >导出表的关键组成部分包括：
-    >
-    >+ 导出的符号： 可以被其他模块访问和使用的函数、变量或资源的名称和地址。
-    >
-    >+ 序数号码(`NID`)： 为每个导出的符号分配一个序数号码。序数号码提供了另一种引用导出符号的方式，特别是当名称没有被公开时。
-    >
-    >+ 地址或指针： 指示模块内导出函数或数据的位置的指针或地址。
-    ```
-    # Copyright (C) 2011, 2012 The uOFW team
-    # See the file COPYING for copying permission.
+    
+    `prxtool sample.prx -p` 生成 `exports.exp`
 
-    # Automatically exports file generated with prxtool
-    PSP_BEGIN_EXPORTS
+    !!! note "导出表(Export Table)"
+   
+        `prx`文件的导出表可以类比Windows PE文件（如DLL文件）中的导出表。
+        
+        导出表包含了一个模块显式向其他模块公开供其使用的符号列表。
+        
+        导出表的关键组成部分包括：
+        
+        + 导出的符号： 可以被其他模块访问和使用的函数、变量或资源的名称和地址。
+        + 序数号码(`NID`)： 为每个导出的符号分配一个序数号码。序数号码提供了另一种引用导出符号的方式，特别是当名称没有被公开时。
+        + 地址或指针： 指示模块内导出函数或数据的位置的指针或地址。
+    
+    ??? Sample
+        ```
+        # Copyright (C) 2011, 2012 The uOFW team
+        # See the file COPYING for copying permission.
 
-    PSP_EXPORT_START(syslib, 0x0000, 0x8000)
-    PSP_EXPORT_FUNC_HASH(module_start)
-    PSP_EXPORT_FUNC_HASH(module_reboot_phase)
-    PSP_EXPORT_FUNC_HASH(module_reboot_before)
-    PSP_EXPORT_VAR_HASH(module_info)
-    PSP_EXPORT_VAR_HASH(module_sdk_version)
-    PSP_EXPORT_END
+        # Automatically exports file generated with prxtool
+        PSP_BEGIN_EXPORTS
 
-    PSP_EXPORT_START(sceGe_driver, 0x0011, 0x0001)
-    PSP_EXPORT_FUNC_NID(sceGePutBreakpoint, 0x05238809)
-    ......
-    PSP_EXPORT_END
+        PSP_EXPORT_START(syslib, 0x0000, 0x8000)
+        PSP_EXPORT_FUNC_HASH(module_start)
+        PSP_EXPORT_FUNC_HASH(module_reboot_phase)
+        PSP_EXPORT_FUNC_HASH(module_reboot_before)
+        PSP_EXPORT_VAR_HASH(module_info)
+        PSP_EXPORT_VAR_HASH(module_sdk_version)
+        PSP_EXPORT_END
 
-    PSP_EXPORT_START(sceGe_user, 0x0011, 0x4001)
-    PSP_EXPORT_FUNC_NID(sceGeListSync, 0x03444EB4)
-    ......
-    PSP_EXPORT_END
+        PSP_EXPORT_START(sceGe_driver, 0x0011, 0x0001)
+        PSP_EXPORT_FUNC_NID(sceGePutBreakpoint, 0x05238809)
+        ......
+        PSP_EXPORT_END
 
-    PSP_END_EXPORTS
-    ```
+        PSP_EXPORT_START(sceGe_user, 0x0011, 0x4001)
+        PSP_EXPORT_FUNC_NID(sceGeListSync, 0x03444EB4)
+        ......
+        PSP_EXPORT_END
+
+        PSP_END_EXPORTS
+        ```
+
 2. 利用导出表信息生成存根文件/导入表(`.S`文件)
 
     工具：`psp-build-exports`/`prxtool`
@@ -70,25 +73,24 @@
     
     格式：两种，`-k`和？
 
-    例子：`pspsdk/src/ge/sceGe_user.S`(from GitHub)
-    ```C
-        .set noreorder
+    !!! note "[`pspsdk/src/ge/sceGe_user.S`]((https://github.com/pspdev/pspsdk/blob/master/src/base/pspimport.s))"
 
-    #include "pspimport.s"
+        ```C
+            .set noreorder
 
-    #ifdef F_sceGe_user_0000
-        IMPORT_START	"sceGe_user",0x40010000
-    #endif
-    #ifdef F_sceGe_user_0001
-        //Module Name, NID, Function Name(Used only during linking)
-        IMPORT_FUNC	"sceGe_user",0x1F6752AD,sceGeEdramGetSize
-    #endif
-    ......
-    ```
+        #include "pspimport.s"
 
-    注释：[pspimport.s](https://github.com/pspdev/pspsdk/blob/master/src/base/pspimport.s)
+        #ifdef F_sceGe_user_0000
+            IMPORT_START	"sceGe_user",0x40010000
+        #endif
+        #ifdef F_sceGe_user_0001
+            //Module Name, NID, Function Name(Used only during linking)
+            IMPORT_FUNC	"sceGe_user",0x1F6752AD,sceGeEdramGetSize
+        #endif
+        ......
+        ```
 
-3. 存根文件编译形成可重定位目标文件`.o`并进一步打包成存根库`.a`
+3. 编译存根文件，生成可重定位目标文件`.o`并进一步打包成存根库`.a`
     
     例子：`sceGe_user_0000.o` `sceGe_user_0001.o`... 
     -> `libpspge.a`
@@ -101,38 +103,41 @@
     ```
     在运行时存根库在功能上被其所指的`prx`模块代替。
 
+    导出的函数默认以`sceMgr_driver_949CAC22`这样`库名+NID`的形式命名。
+    为了在自己的代码中使用，需要手动编写`.h`头文件，复用上述函数名并依据实际情况定义其接口。
 
-将自己的代码与存根库链接后，我们理论上已经可以借此调用其中的函数了，但导出的函数若不知其含义，显然无从使用；且导出的函数名均以`sceMgr_driver_949CAC22`这样`库名+NID`的形式命名，不利于开发使用。
+4. 对这些模块进行逆向工程，得到其机器语言实现，通过对汇编代码的研究理解其使用方法，以此整理出描述函数接口的头文件并修正导出的函数名。
 
-2. 对这些模块进行逆向工程，得到其机器语言实现，通过对汇编代码的研究理解其使用方法，以此整理出描述函数接口的头文件并修正导出的函数名。
+    NID的计算方式为函数名作SHA256取高32位。可以通过暴力破解尝试反推函数名。
 
-NID的计算方式为函数名作SHA256取高32位。可以通过暴力破解尝试反推函数名。
+    通过这种方法，得到包含头文件和存根库的整个PSPSDK开发环境。
 
-通过这种方法，得到包含头文件和存根库的整个PSPSDK开发环境。
+    目前PSPSDK中有一些库的头文件中函数名仍带有奇怪的字符串，这实际上就是直接从导出表中得到的函数的`NID`，由于彼时尚不理解其具体实现，没有办法为其取名。
 
-目前PSPSDK中有一些库的头文件中函数名仍带有奇怪的字符串，这实际上就是直接从导出表中得到的函数的`NID`，由于彼时尚不理解其具体实现，没有办法为其取名。
+??? inline end "Assembly for adding STUB"
 
+    ```
+    .macro IMPORT_START module, flags_ver
 
-.macro IMPORT_START module, flags_ver
+        .set push
+        .section .rodata.sceResident, "a"
+        .word   0
+    __stub_modulestr_\module:
+        .asciz  "\module"
+        .align  2
 
-	.set push
-	.section .rodata.sceResident, "a"
-	.word   0
-__stub_modulestr_\module:
-	.asciz  "\module"
-	.align  2
+        .section .lib.stub, "a", @progbits
+        .global __stub_module_\module
+    __stub_module_\module:
+        .word   __stub_modulestr_\module // Module Name String Addr
+        .word   \flags_ver  // Flags
+        .word   0x5
+        .word   __executable_start  // 在psp-fixup-imports中重定位
+        .word   __executable_start  // 在psp-fixup-imports中重定位
 
-	.section .lib.stub, "a", @progbits
-	.global __stub_module_\module
-__stub_module_\module:
-	.word   __stub_modulestr_\module // Module Name String Addr
-	.word   \flags_ver  // Flags
-	.word   0x5
-	.word   __executable_start  // 在psp-fixup-imports中重定位
-	.word   __executable_start  // 在psp-fixup-imports中重定位
-
-	.set pop
-.endm
+        .set pop
+    .endm
+    ```
 
 
 # Cooperating with different SDKs
