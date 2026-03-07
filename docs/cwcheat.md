@@ -26,8 +26,8 @@ Triangle - Enable all cheats
 
 ### `CheatMaster Fusion PSP`
 在国内使用较多，同样兼容`CW Cheat`格式
-> [Gamebrew存档]
-> [国内的使用教程](http://www.k73.com/psp/7408.html)
+> - [Gamebrew存档]()
+> - [国内的使用教程](http://www.k73.com/psp/7408.html)
 
 ### `PPSSPP`
 
