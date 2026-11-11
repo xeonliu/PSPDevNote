@@ -7,6 +7,10 @@ Homepage: https://xeonliu.github.io/PSPDevNote/
 
 [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
+Nowadays with LLMs, ways people reading docs have dramatically changed. So this site will built for agents, Which means 
+the contents should only keep the key points and core design ideas with reference links. That might be the best way
+for one to quickly grasp the idea of programming for PSP. Guides are not that important these days.
+
 - [x] 构建的目标
 - [ ] 环境配置
 	- [x] PSPDEV
